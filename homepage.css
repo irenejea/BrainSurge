@@ -6,7 +6,7 @@ html{
 background: #c9de96; /* Old browsers */
 background: -moz-linear-gradient(top,  #c9de96 0%, #8ab66b 50%, #398235 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c9de96), color-stop(50%,#8ab66b), color-stop(100%,#398235)); /* Chrome,Safari4+ */
-background: -webkit-gradient(top,  #c9de96 0%,#8ab66b 50%,#398235 100%); /* Chrome10+,Safari5.1+ */
+background: -webkit-linear-gradient(top,  #c9de96 0%,#8ab66b 50%,#398235 100%); /* Chrome10+,Safari5.1+ */
 background: -o-linear-gradient(top,  #c9de96 0%,#8ab66b 50%,#398235 100%); /* Opera 11.10+ */
 background: -ms-linear-gradient(top,  #c9de96 0%,#8ab66b 50%,#398235 100%); /* IE10+ */
 background: linear-gradient(to bottom,  #c9de96 0%,#8ab66b 50%,#398235 100%); /* W3C */
