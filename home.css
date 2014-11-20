@@ -22,20 +22,30 @@ body{
 
 #title{
 	position: absolute;
-	left: 250px;
+	left: 280px;
 	top: 20px;
-	border: solid 2px black;
-	width: 800px;
+	//border: solid 2px black;
+	width: 650px;
 	height: 100px;
+	background-color: #FFD685;
+	color:#003366;
+	font-size: 80px;
+	text-align: center;
+	letter-spacing:7px;
+	font-family: Century Gothic, Verdana;
 }
 
 #description{
 	position: absolute;
-	left: 300px;
+	left: 280px;
 	top: 150px;
-	border: solid 2px black;
-	width: 700px;
+	//border: solid 2px black;
+	width: 650px;
 	height: 50px;
+	color: #FFD685;
+	font-family: Verdana;
+	text-align: center;
+	font-size: 15px;
 }
 
 #info{
@@ -61,10 +71,26 @@ body{
 	left: 280px;
 	top: 230px;
 	border: solid 2px black;
-	width: 650px;
-	height: 200px;
+	padding: 15px;
+	width: 620px;
+	height: 170px;
+	background-color: #FFB8B8;
+	color:#003366;
+	text-align: center;
+	font-family: Verdana;
+	font-size: 15px;
 }
 
+#MB_title{
+	font-size: 20px;
+}
+
+td{
+	color:#003366;
+	text-align: center;
+	font-family: Verdana;
+	font-size: 15px;
+}
 #Big5{
 	position: absolute;
 	left: 280px;

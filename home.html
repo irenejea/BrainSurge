@@ -1,6 +1,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="./home.css" type="text/css" name="style1">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <title>Final</title>
 </head>
 <body>
@@ -13,13 +14,13 @@
 
 <div id="title">
 
-	<p>title</p>
+	<b>Brain Surge</b>
 
 </div>
 
 <div id="description">
 
-	<p>description</p>
+	Brain Surge is an interactive website that allows you to take personality quizzes and learn about yourself. Read about the quizzes below and then take one to get started. You can also make an account by registering to keep track of your previous quizzes.
 
 </div>
 
@@ -36,18 +37,76 @@
 </div>
 
 <div id="MB">
+<span id="MB_title"><b><u>The Myers-Briggs Type Indicator</u></b></span> 
+<br><span id="MB_info" >The  MBTI, is a personality inventory developed by Katharine Cook Briggs and Isabel Briggs Myers, based on the theories of Carl Gustav Jung.This test should take between 20 and 30 mins to complete.<br>Your answers will assign you 4 letters based on 4 metrics:
+<center><table width="100%">
+	<ul><tr><td><li> Extraversion vs. Introversion</li></td>
+	<td><li> Sensing vs. Intuition</li></td></tr>
+	<tr><td><li> Thinking vs. Feeling</li></td>
+	<td><li>Judging vs. Perceiving</li></td></tr>
+	</ul>
+	<tr><td><a href="http://en.wikipedia.org/wiki/Myers-Briggs_Type_Indicator" target="blank">Learn More about the MBTI</a></td>
+	<td>Take this test now!</td></tr>
+    </table></center></span>
 
-	<p>myers briggs</p>
+<script>
+	$("#MB_info").hide();
+	$("#MB_title").show();
+	$("#MB").hover(function(){
+		$("#MB_info").toggle();
+		$("#MB_title").toggle();
+	})
+</script>
+
 
 </div>
 
 <div id="Big5">
-	<p>The Big 5</p>
+<span  id="Big5_title"><b><u>The Big 5</u></b></span>
+<br><span id="Big5_info">Big 5 Info...
+<table width="100%">
+	<tr><ul><td><li>Conscientiousness </li></td>
+	<td><li>Extraversion</li></td></tr>
+	<tr><td><li>Agreeableness</li></td>
+	<td><li>Neuroticism</li></td></tr>
+	<tr><td culspan="2"><li>Openness to Experience</li></td></ul></tr>
+	<tr><td><a href="http://en.wikipedia.org/wiki/Big_Five_personality_traits" target="blank">Learn More about the <br>Big 5 Personality Traits</a></td>
+	<td>Take this test now!</td></tr>
+    </table></center></span>
+	
+<script>
+	$("#Big5_info").hide();
+	$("#Big5_title").show();
+	$("#Big5").hover(function(){
+		$("#Big5_info").toggle();
+		$("#Big5_title").toggle();
+	})
+</script>
+
+
 </div>
 
 <div id="AB">
+<span  id="AB_title"><b><u>The A/B Type</u></b></span>
+<br><span id="AB_info">A/B type info...
+<table width="100%">
+	<tr><td>Type A</td><td>Type B</td></tr>
+	<tr><td> facts</td><td>facts</td></tr>
+	<tr><td> facts</td><td>facts</td></tr>
+	<tr><td><a href="http://en.wikipedia.org/wiki/Type_A_and_Type_B_personality_theory" target="blank">Learn More about <br>Type A and Type B Personality Theory</a></td>
+	<td>Take this test now!</td></tr>
+    </table></center></span>
+	
+<script>
+	$("#AB_info").hide();
+	$("#AB_title").show();
+	$("#AB").hover(function(){
+		$("#AB_info").toggle();
+		$("#AB_title").toggle();
+	})
+</script>
 
-	<p>A/B type </p>
+
 
 </div>
 
