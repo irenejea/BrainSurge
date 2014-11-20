@@ -1,0 +1,103 @@
+/* final project css workspace*/
+
+html{
+	background-color: #007A7A;
+}
+
+body{
+	position: absolute;
+	border: solid 2px black;
+	width: 1200px;
+	height: 1200px;
+}
+
+#logo{
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	border: solid 2px black;
+	width: 220px;
+	height: 180px;
+}
+
+#title{
+	position: absolute;
+	left: 250px;
+	top: 20px;
+	border: solid 2px black;
+	width: 800px;
+	height: 100px;
+}
+
+#description{
+	position: absolute;
+	left: 300px;
+	top: 150px;
+	border: solid 2px black;
+	width: 700px;
+	height: 50px;
+}
+
+#info{
+	position: absolute;
+	left: 20px;
+	top: 230px;
+	border: solid 2px black;
+	width: 240px;
+	height: 700px;
+}
+
+#login{
+	position: absolute;
+	right: 20px;
+	top: 230px;
+	border: solid 2px black;
+	width: 220px;
+	height: 240px;
+}
+
+#MB{
+	position: absolute;
+	left: 280px;
+	top: 230px;
+	border: solid 2px black;
+	width: 650px;
+	height: 200px;
+}
+
+#Big5{
+	position: absolute;
+	left: 280px;
+	top: 450px;
+	border: solid 2px black;
+	width: 650px;
+	height: 200px;
+}
+
+#AB{
+	position: absolute;
+	left: 280px;
+	top: 680px;
+	border: solid 2px black;
+	width: 650px;
+	height: 200px;
+}
+
+#videos{
+	position: absolute;
+	left: 280px;
+	top: 900px;
+	border: solid 2px black;
+	width: 650px;
+	height: 200px;
+}
+
+#footer{
+	position: absolute;
+	left: 250px;
+	bottom: 20px;
+	border: solid 2px black;
+	width: 800px;
+	height: 60px;
+}
+
