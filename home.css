@@ -70,7 +70,7 @@ body{
 	position: absolute;
 	left: 280px;
 	top: 230px;
-	border: solid 2px black;
+	//border: solid 2px black;
 	padding: 15px;
 	width: 620px;
 	height: 170px;
@@ -105,7 +105,7 @@ td{
 	position: absolute;
 	left: 280px;
 	top: 450px;
-	border: solid 2px black;
+	//border: solid 2px black;
 	width: 650px;
 	height: 200px;
 	background-color: #80CC80;
@@ -119,7 +119,7 @@ td{
 	position: absolute;
 	left: 280px;
 	top: 680px;
-	border: solid 2px black;
+	//border: solid 2px black;
 	width: 650px;
 	height: 200px;
 	background-color: #B8B8FF;
@@ -142,7 +142,7 @@ td{
 	position: absolute;
 	left: 250px;
 	bottom: 20px;
-	border: solid 2px black;
+	//border: solid 2px black;
 	width: 800px;
 	height: 60px;
 	background-color: #FFD685;
