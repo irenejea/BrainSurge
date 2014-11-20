@@ -125,5 +125,10 @@ td{
 	border: solid 2px black;
 	width: 800px;
 	height: 60px;
+	background-color: #FFD685;
+	color:#003366;
+	font-family: Verdana;
+	letter-spacing: 3px;
+	font-size: 12px;
 }
 
