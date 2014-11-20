@@ -82,7 +82,17 @@ body{
 }
 
 #MB_title{
-	font-size: 20px;
+	font-size: 30px;
+}
+
+#Big5_title{
+	font-size: 80px;
+	font-family: arial black, verdana;
+}
+
+#AB_title{
+	font-size: 40px;
+	font-family: palatino linotype, verdana;
 }
 
 td{
@@ -98,6 +108,11 @@ td{
 	border: solid 2px black;
 	width: 650px;
 	height: 200px;
+	background-color: #80CC80;
+	color:#003366;
+	text-align: center;
+	font-family: Verdana;
+	font-size: 15px;
 }
 
 #AB{
@@ -107,6 +122,11 @@ td{
 	border: solid 2px black;
 	width: 650px;
 	height: 200px;
+	background-color: #B8B8FF;
+	color:#003366;
+	text-align: center;
+	font-family: Verdana;
+	font-size: 15px;
 }
 
 #videos{
@@ -132,3 +152,17 @@ td{
 	font-size: 12px;
 }
 
+a:link{
+	color:#003366;
+	text-decoration: none;
+}
+
+a:visited{
+	color:#003366;
+ 	text-decoration: none;
+}
+
+a:hover{
+ 	text-decoration: underline;
+	font-weight: bold;
+}
