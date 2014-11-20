@@ -25,14 +25,64 @@
 </div>
 
 <div id="info">
+	<center><div id="info_title">Brain Surge Site Navagation</div></center>
+	<br>
+	<br>
+	<b><i>Personality Quizzes</i></b>
+	<ul><li><a href="./mb.html">MBTI</a></li>
+	    <li><a href="./Big5.html">The Big Five</a></li>
+	    <li><a href="./tybeAB.html">Type A/B</a></li>
+	</ul>
+	<br>
+	<b><i>Your Profile</b></i>
+	<br>
+	<!-- takes them to profile page, or if they aren't logged in, to register/login page-->
+	<center><form method="post" action="./login.html">
+	<input type="submit" value="Profile" name="profile">
+	</form></center>
+	<br>
 
-	<p>info</p>
-
+	<b><i>More Information</b></i>
+	<dl><dt>Personality Theory</dt>
+		<dd><a href="https://en.wikipedia.org/wiki/Personality_psychology">Personality Psychology</a></dd>
+		<dd><a href="http://drdianehamilton.wordpress.com/2011/12/18/top-18-personality-theorists-including-freud-and-more/">Famous Personality Psychologists</a></dd>
+	<br>
+	    <dt>Social Psychology</dt>
+		<dd><a href="https://en.wikipedia.org/wiki/Social_psychology">Social Psychology</a></dd>
+		<dd><a href="http://www.ippanetwork.org/">Positive Psychology</a></dd>
+	<br>
+	    <dt>Neuropsychology</dt>
+		<dd><a href="https://en.wikipedia.org/wiki/Neuropsychology">Neuropsychology</a></dd>
+		<dd><a href="http://www.neuroaustin.com/">Local Neuropsychologists</a></dd>
+	<br>
+	    <dt>Other Fields of Psychology</dt>
+		<dd><a href="https://en.wikipedia.org/wiki/Cognitive_psychology">Cognitive Psychology</a></dd>
+		<dd><a href="https://en.wikipedia.org/wiki/Developmental_psychology">Developmental Psychology</a></dd>
+		<dd><a href="https://en.wikipedia.org/wiki/Clinical_psychology">Clinical Psychology</a></dd>
+		<dd><a href="https://en.wikipedia.org/wiki/Abnormal_psychology">Abnormal Psychology</a></dd>
+	</dl>
+	
+	<b><i>Contact Brain Surge</i></b>
+		<p><a href="./info.html">About Brain Surge and the developers</a></p>
 </div>
 
 <div id="login">
 
-	<p>login</p>
+	<br>
+	<form method="post" action="<!-- php login script-->">
+	<center><b>Login Here!</b></center><br>
+	<table>
+	<tr><td>Username:</td><td><input type="text" name="username" size="15"></td></tr>
+	<tr><td>Password:</td><td><input type="password" name"password" size="15"></td></tr>
+	<tr><td><input type="submit" value="Login" name="login"></td>
+		<td><input type="reset" value="Reset"></td></tr>
+	</table>
+	</form>
+	<center><b>New Users Register Here!</b></center><br>
+	<center>
+	<form method="post" action="./login.html">
+	<input type="submit" value="Register" name="register">
+	</form>
 
 </div>
 
@@ -53,8 +103,8 @@
 	$("#MB_info").hide();
 	$("#MB_title").show();
 	$("#MB").hover(function(){
-		$("#MB_info").toggle();
-		$("#MB_title").toggle();
+		$("#MB_info").toggle(300);
+		$("#MB_title").toggle(300);
 	})
 </script>
 
@@ -63,13 +113,15 @@
 
 <div id="Big5">
 <span  id="Big5_title"><b>The <u>Big</u> 5</b></span>
-<br><span id="Big5_info">Big 5 Info...
-<table width="100%" style="table-layout:fixed;">
-	<ul><tr><td><li>Conscientiousness </li></td>
+<br><span id="Big5_info">The Big Five personality traits are based on the five-factor model of personality. This model has been shown to be consistent for people of different ages and cultures. The Big Five are sometimes referred to as OCEAN:
+<table width="100%" style="table-layout:fixed; padding:0;">
+	<ul>
+	<tr><td colspan="2"><li><center>Openness to Experience</center></li></td></tr>
+	<tr><td><li>Conscientiousness </li></td>
 	<td><li>Extraversion</li></td></tr>
 	<tr><td><li>Agreeableness</li></td>
 	<td><li>Neuroticism</li></td></tr>
-	<tr><td colspan="2"><li><center>Openness to Experience</center></li></td></tr></ul>
+	</ul>
 	<tr><td><a href="http://en.wikipedia.org/wiki/Big_Five_personality_traits" target="blank">Learn More about the <br>Big 5 Personality Traits</a></td>
 	<td><a href="./big5.html">Take this test now!</a></td></tr>
     </table></center></span>
@@ -78,8 +130,8 @@
 	$("#Big5_info").hide();
 	$("#Big5_title").show();
 	$("#Big5").hover(function(){
-		$("#Big5_info").toggle();
-		$("#Big5_title").toggle();
+		$("#Big5_info").toggle(300);
+		$("#Big5_title").toggle(300);
 	})
 </script>
 
@@ -88,21 +140,26 @@
 
 <div id="AB">
 <span  id="AB_title"><b><i>A/B Personality Types</i></b></span>
-<br><span id="AB_info">A/B type info...
-<table width="100%" style="table-layout:fixed;">
-	<tr><td>Type A</td><td>Type B</td></tr>
-	<tr><td> facts</td><td>facts</td></tr>
-	<tr><td> facts</td><td>facts</td></tr>
-	<tr><td><a href="http://en.wikipedia.org/wiki/Type_A_and_Type_B_personality_theory" target="blank">Learn More about <br>Type A and Type B Personality Theory</a></td>
-	<td><a href="./typeAB.html">Take this test now!</a></td></tr>
+<br><span id="AB_info">Type A and B personality theory was developed by cardiologists, rather than psychologists, to determine what kinds of people are more prone or less prone to mental stress and possible heart attacks.
+<table width="100%" style="table-layout:fixed;" >
+	<tr><td><b>Type A</b></td>
+		<td rowspan="2"><a href="http://www.simplypsychology.org/personality-a.html" target="blank">Learn More about <br>Type A and Type B Personality Theory</a></td>
+		<td><b>Type B</b></td></tr>
+	<ul><tr><td ><li>Goal-oriented</li></td>
+		<td><li>Steady worker</li></td></tr>
+	<tr><td><li>"Workaholic"</li></td>
+		<td rowspan="2"><a href="./typeAB.html">Take this test now!</a></td>
+		<td><li>Creative</li></td></tr>
+	<tr><td><li>Competitive</li></td>
+		<td><li>Reflective</li></td></tr></ul>
     </table></center></span>
 	
 <script>
 	$("#AB_info").hide();
 	$("#AB_title").show();
 	$("#AB").hover(function(){
-		$("#AB_info").toggle();
-		$("#AB_title").toggle();
+		$("#AB_info").toggle(300);
+		$("#AB_title").toggle(300);
 	})
 </script>
 

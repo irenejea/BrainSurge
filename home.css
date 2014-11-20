@@ -6,7 +6,6 @@ html{
 
 body{
 	position: absolute;
-	border: solid 2px black;
 	width: 1200px;
 	height: 1200px;
 }
@@ -15,7 +14,6 @@ body{
 	position: absolute;
 	left: 20px;
 	top: 20px;
-	border: solid 2px black;
 	width: 220px;
 	height: 180px;
 }
@@ -24,10 +22,9 @@ body{
 	position: absolute;
 	left: 280px;
 	top: 20px;
-	//border: solid 2px black;
 	width: 650px;
 	height: 100px;
-	background-color: #FFD685;
+	background-color: #FFE2AA;
 	color:#003366;
 	font-size: 80px;
 	text-align: center;
@@ -39,10 +36,9 @@ body{
 	position: absolute;
 	left: 280px;
 	top: 150px;
-	//border: solid 2px black;
 	width: 650px;
 	height: 50px;
-	color: #FFD685;
+	color: #FFE2AA;
 	font-family: Verdana;
 	text-align: center;
 	font-size: 15px;
@@ -52,25 +48,44 @@ body{
 	position: absolute;
 	left: 20px;
 	top: 230px;
-	border: solid 2px black;
-	width: 240px;
-	height: 700px;
+	width: 220px;
+	height: 800px;
+	padding: 10px;
+	background-color: #FFE2AA;
+	color:#003366;
+	font-family: Verdana;
+	font-size: 15px;
+}
+
+#info_title{
+	font-size: 24px;
+	text-align: center;
+	border: dotted 2px #003366;
+}
+
+dt{
+	font-size: 16px;
+	text-decoration: underline;
+	line-height: 140%;
 }
 
 #login{
 	position: absolute;
 	right: 20px;
 	top: 230px;
-	border: solid 2px black;
-	width: 220px;
-	height: 240px;
+	width: 200px;
+	height: 220px;
+	padding: 10px;
+	background-color: #FFE2AA;
+	color:#003366;
+	font-family: Verdana;
+	font-size: 15px;
 }
 
 #MB{
 	position: absolute;
 	left: 280px;
 	top: 230px;
-	//border: solid 2px black;
 	padding: 15px;
 	width: 620px;
 	height: 170px;
@@ -105,8 +120,9 @@ td{
 	position: absolute;
 	left: 280px;
 	top: 450px;
-	//border: solid 2px black;
-	width: 650px;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 620px;
 	height: 200px;
 	background-color: #80CC80;
 	color:#003366;
@@ -119,7 +135,6 @@ td{
 	position: absolute;
 	left: 280px;
 	top: 680px;
-	//border: solid 2px black;
 	width: 650px;
 	height: 200px;
 	background-color: #B8B8FF;
@@ -140,12 +155,11 @@ td{
 
 #footer{
 	position: absolute;
-	left: 250px;
+	left: 220px;
 	bottom: 20px;
-	//border: solid 2px black;
 	width: 800px;
 	height: 60px;
-	background-color: #FFD685;
+	background-color: #FFE2AA;
 	color:#003366;
 	font-family: Verdana;
 	letter-spacing: 3px;
