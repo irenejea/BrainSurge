@@ -148,7 +148,7 @@ td{
 	position: absolute;
 	left: 18em;
 	top: 57em;
-	width: 55em;
+	width: 50em;
 	height: 25em;
 }
 #vid2{
@@ -163,6 +163,7 @@ td{
 #videos h2{
 	border-bottom: solid;
 	font-family: verdana;
+	color: #FFE2AA;
 }
 
 #footer{
@@ -181,10 +182,10 @@ td{
 #bio{
 	font-family: verdana;
 	margin-top: 10em;
-	color: white;
+	color: #FFD685;
 	position: absolute;
 	left: 20em;
-	width: 50em;
+	width: 36em;
 	top: 3em;
 }
 #infohead{
