@@ -1,0 +1,54 @@
+html{
+	margin: 0;
+	padding: 0;
+	font-family: verdana;
+}
+#container {
+	display: block;
+	text-align: center;
+	background-color: #007A7A;
+	padding-top: .5px;
+ }
+img{
+	padding-bottom: 5px;
+	width: 164px;
+	height: 133px;
+}
+#login{
+	position: absolute;
+	left: 20em;
+}
+#register{
+	position: absolute;
+	left: 58em;
+	top: 12.1em;
+}
+
+#login ul{
+	list-style: none;
+	position: absolute;
+	right: 5.8em;
+}
+#register ul{	
+	list-style: none;
+	position: absolute;
+	right: -2px;
+	top: 8em;
+}
+li{
+	
+	padding-bottom: 1em;
+}
+h2{
+	color: #007A7A;
+}
+#rsubmit{
+	position: absolute;
+	top: 17em;
+	width: 100%;
+}
+#lsubmit{
+	position: absolute;
+	top: 16.8em;
+	width: 22em;
+}	
