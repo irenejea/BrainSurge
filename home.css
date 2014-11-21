@@ -7,7 +7,7 @@ html{
 body{
 	position: absolute;
 	width: 1200px;
-	height: 1200px;
+	height: 1450px;
 }
 
 #logo{
@@ -146,11 +146,23 @@ td{
 
 #videos{
 	position: absolute;
-	left: 280px;
-	top: 900px;
-	border: solid 2px black;
-	width: 650px;
-	height: 200px;
+	left: 18em;
+	top: 57em;
+	width: 55em;
+	height: 25em;
+}
+#vid2{
+	position: absolute;
+	left: 25em;
+}
+#vid3{
+	position: absolute;
+	top: 17em;
+	left: 12em;
+}
+#videos h2{
+	border-bottom: solid;
+	font-family: verdana;
 }
 
 #footer{
@@ -166,6 +178,31 @@ td{
 	font-size: 12px;
 }
 
+#bio{
+	font-family: verdana;
+	margin-top: 10em;
+	color: white;
+	position: absolute;
+	left: 20em;
+	width: 50em;
+	top: 3em;
+}
+#infohead{
+	font-weight: 900;
+	background-color: #FFD685;
+	width: 11em;
+	position: absolute;
+	left: 280px;
+	top: 20px;
+	font-family: "century gothic";
+	letter-spacing: 5px;
+	font-size: 5em;
+	color: #003366;
+	text-align: center;
+}
+#bio h2{
+	border-bottom: solid;
+}
 a:link{
 	color:#003366;
 	text-decoration: none;
