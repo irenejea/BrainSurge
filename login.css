@@ -1,54 +1,56 @@
-html{
-	margin: 0;
-	padding: 0;
-	font-family: verdana;
-}
-#container {
+#head {
 	display: block;
 	text-align: center;
+	min-width: 80em;
 	background-color: #007A7A;
 	padding-top: .5px;
+	width: 100%;
  }
+#container{
+	margin: 0 auto;
+	font-family: verdana;
+	width: 80em;
+	height: 30em;
+}
 img{
 	padding-bottom: 5px;
 	width: 164px;
 	height: 133px;
 }
 #login{
-	position: absolute;
-	left: 20em;
+	float: left;
+	width: 30em;
+	border-right: solid gainsboro .1em;
+	margin-left: 9.5em;
 }
 #register{
-	position: absolute;
-	left: 58em;
-	top: 12.1em;
+	width: 30em;
+	float: right;
+	margin-right: 3em;
 }
-
-#login ul{
+#login ul, #register ul{
 	list-style: none;
-	position: absolute;
-	right: 5.8em;
-}
-#register ul{	
-	list-style: none;
-	position: absolute;
-	right: -2px;
-	top: 8em;
+	margin-left: -2.5em;
 }
 li{
-	
 	padding-bottom: 1em;
+}
+#pw{
+	margin-bottom: 3em;
 }
 h2{
 	color: #007A7A;
 }
-#rsubmit{
-	position: absolute;
-	top: 17em;
-	width: 100%;
+#rsubmit, #lsubmit{
+	float: right;
+	margin: -1em 14em;
+	width: 6em;
+	height: 3em;
+	border-radius: 6px 6px 6px 6px ;
+	background-color: #007A7A;
+	color: white;
+	font-weight: bold;
 }
 #lsubmit{
-	position: absolute;
-	top: 16.8em;
-	width: 22em;
-}	
+	margin-bottom: 1em;
+}
