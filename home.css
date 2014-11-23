@@ -4,96 +4,99 @@ html{
 	background-color: #007A7A;
 }
 
-body{
-	position: absolute;
-	width: 1200px;
-	height: 1450px;
+#container{
+	margin: 0 auto 0;
+	height: 70em;
+	width: 80em;
+	overflow: auto;
 }
 
 #logo{
-	position: absolute;
-	left: 20px;
-	top: 20px;
-	width: 220px;
-	height: 180px;
+	float: left;
+	margin: 1em 1em;
+	width: 13.75em;
+	height: 11.25em;
 }
 
 #title{
-	position: absolute;
-	left: 280px;
-	top: 20px;
-	width: 650px;
-	height: 100px;
+	float: left;
+	width: 41em;
+	height: 6.5em;
 	background-color: #FFE2AA;
 	color:#003366;
-	font-size: 80px;
+	margin: 1em 1em;
+}
+h1{
 	text-align: center;
+	font-size: 5em;
+	margin-top: 0;
 	letter-spacing:7px;
 	font-family: Century Gothic, Verdana;
 }
 
 #description{
-	position: absolute;
-	left: 280px;
-	top: 150px;
-	width: 650px;
-	height: 50px;
+	float: left;
+	width: 44em;
+	height: 5em;
+	margin: -5em 17.5em;
 	color: #FFE2AA;
 	font-family: Verdana;
 	text-align: center;
-	font-size: 15px;
+	font-size: .95em;
 }
 
 #info{
-	position: absolute;
-	left: 20px;
-	top: 230px;
-	width: 220px;
-	height: 800px;
-	padding: 10px;
+	float: left;
+	margin: 1em 1em 0 1em;
+	padding: .6em;
+	width: 14.7em;
+	height: 52em;
 	background-color: #FFE2AA;
 	color:#003366;
 	font-family: Verdana;
-	font-size: 15px;
+	font-size: .95em;
 }
 
 #info_title{
-	font-size: 24px;
+	font-size: 1.5em;
 	text-align: center;
 	border: dotted 2px #003366;
 }
 
 dt{
-	font-size: 16px;
+	font-size: 1em;
 	text-decoration: underline;
-	line-height: 140%;
+	line-height: 100%;
 }
 
-#login{
-	position: absolute;
-	right: 20px;
-	top: 230px;
-	width: 200px;
-	height: 220px;
-	padding: 10px;
+#login{	
+	text-align: center;
+	float: right;
+	margin: -13em 5em 0 0;
+	width: 18em;
+	height: 11em;
 	background-color: #FFE2AA;
 	color:#003366;
 	font-family: Verdana;
-	font-size: 15px;
+	font-size: small;
+}
+.btn{
+	border-radius: 5px 6px 6px 6px ;
+	float: right;
+	margin-right: 2.5em;
 }
 
 #MB{
-	position: absolute;
-	left: 280px;
-	top: 230px;
-	padding: 15px;
-	width: 620px;
-	height: 170px;
+	margin: 1em .5em 0 .5em;
+	float: left;
+	padding: 1em;
+	width: 42.5em;
+	height: 11.33em;
 	background-color: #FFB8B8;
 	color:#003366;
 	text-align: center;
 	font-family: Verdana;
-	font-size: 15px;
+	font-size: .9em;
 }
 
 #MB_title{
@@ -117,49 +120,44 @@ td{
 	font-size: 15px;
 }
 #Big5{
-	position: absolute;
-	left: 280px;
-	top: 450px;
-	padding-left: 15px;
-	padding-right: 15px;
-	width: 620px;
-	height: 200px;
+	float: left;
+	margin: 3em 0 0 .5em;
+	padding: 1em;
+	width: 42.5em;
+	height: 12.33em;
 	background-color: #80CC80;
 	color:#003366;
 	text-align: center;
 	font-family: Verdana;
-	font-size: 15px;
+	font-size: .9em;
 }
 
 #AB{
-	position: absolute;
-	left: 280px;
-	top: 680px;
-	width: 650px;
-	height: 200px;
+	float: left;
+	margin: 3em 0 0 .5em;
+	width: 44.5em;
+	height: 14.33em;
 	background-color: #B8B8FF;
 	color:#003366;
 	text-align: center;
 	font-family: Verdana;
-	font-size: 15px;
+	font-size: .9em;
 }
 
 #videos{
-	position: absolute;
-	left: 18em;
-	top: 57em;
-	width: 50em;
+	float: right;
+	margin: -29em 2em 0 0;
+	width: 19em;
 	height: 25em;
 }
-#vid2{
-	position: absolute;
-	left: 25em;
+#vid1{
+	margin-top: 1em;
 }
-#vid3{
-	position: absolute;
-	top: 17em;
-	left: 12em;
+
+#vid2, #vid3{
+	margin-top: 4em;
 }
+
 #videos h2{
 	border-bottom: solid;
 	font-family: verdana;
@@ -167,16 +165,15 @@ td{
 }
 
 #footer{
-	position: absolute;
-	left: 220px;
-	bottom: 20px;
-	width: 800px;
+	text-align: center;
+	margin: 88em auto 0 auto;
+	width: 98%;
 	height: 60px;
-	background-color: #FFE2AA;
-	color:#003366;
+	color:#003a74;
 	font-family: Verdana;
 	letter-spacing: 3px;
 	font-size: 12px;
+	border-top: solid .1em;
 }
 
 #bio{
@@ -184,13 +181,13 @@ td{
 	margin-top: 10em;
 	color: #FFD685;
 	position: absolute;
-	left: 20em;
+	left: 0em;
 	width: 36em;
 	top: 3em;
 }
 #infohead{
 	font-weight: 900;
-	background-color: #FFD685;
+	background-color: #FFE2AA;
 	width: 11em;
 	position: absolute;
 	left: 280px;
@@ -215,6 +212,5 @@ a:visited{
 }
 
 a:hover{
- 	text-decoration: underline;
-	font-weight: bold;
+	color: #989898;
 }
