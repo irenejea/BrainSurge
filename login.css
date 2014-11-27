@@ -19,14 +19,13 @@ img{
 }
 #login{
 	float: left;
-	width: 30em;
+	width: 27.7em;
 	border-right: solid gainsboro .1em;
-	margin-left: 9.5em;
+	margin-left: 12em;
 }
 #register{
-	width: 30em;
+	width: 35em;
 	float: right;
-	margin-right: 3em;
 }
 #login ul, #register ul{
 	list-style: none;
@@ -41,9 +40,8 @@ li{
 h2{
 	color: #007A7A;
 }
-#rsubmit, #lsubmit{
+#submitR, #submitL{
 	float: right;
-	margin: -1em 14em;
 	width: 6em;
 	height: 3em;
 	border-radius: 6px 6px 6px 6px ;
@@ -51,6 +49,48 @@ h2{
 	color: white;
 	font-weight: bold;
 }
-#lsubmit{
+#submitR{
+	margin-right: 20em;
+}
+#submitL{
+	margin-right: 11.3em;
+}
+#submitL{
 	margin-bottom: 1em;
 }
+.error{
+	display: none;
+	margin-left: 10px;
+}
+.error_show{
+	color: red;
+	margin-left: .5em;
+	font-size: small;
+}
+#loginError{
+	position: absolute;
+	left: 26.5em;
+	margin-top: -2em;
+}
+input.invalid{
+	border: 2px solid red;
+}
+input.valid{
+	border: 2px solid green;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
