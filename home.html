@@ -66,16 +66,28 @@
 </div>
 
 <div id="login">
-	<form method="post" action="">
+	<form method="post" action="login.html" onsubmit="return validateL()">
 	<br>
 	<b>Login Here!</b><br>
 	<table>
-	<tr><td>Username:</td><td><input type="text" name="username" size="15"></td></tr>
-	<tr><td>Password:</td><td><input type="password" name="password" size="15"></td></tr>
+	<tr><td>Username:</td><td><input type="text" name="username" id="id" size="15"></td></tr>
+	<tr><td>Password:</td><td><input type="password" name="password" id="pw" size="15"></td></tr>
 	</table>
 	<input class="btn" type="submit" value="Login" name="login"><br>
 	<br>New User? Register <a href="login.html"><u>Here</u></a>
 	</form>
+	
+<script type="text/javascript">
+	function validateL(){
+		var user = document.getElementById("id");
+		var pass = document.getElementById("pw");
+		if(user.value == "" || pass.value == ""){
+			alert("Please fill in all fields to login");
+			return false;
+		}
+	}
+</script>
+
 </div>
 
 <div id="MB">
