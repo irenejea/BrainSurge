@@ -3,6 +3,7 @@
 <head>
 	<title>Log in | Brain Surge</title>
 	<link rel="stylesheet" href="./login.css" type="text/css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
 </head>
 
 
@@ -13,29 +14,141 @@
 <div id="login">
 	<h2> Log in </h2>
 	<p> Enter your username and password to log in. </p>
-	<form method="post" action="login.html">
+	<form id="formL" method="post" action="login.html">
 	<ul>
-	<li><input id="id" type="text" name="user" placeholder="Username" size="45"/></li>
-	<li><input id="pw" type="password" name="pw" placeholder="Password" size="45"/></li>
+	<li><input id="id" type="text" name="id" placeholder="Username" size="45"/></li>
+	<li><input id="pw" type="password" name="pw" placeholder="Password" size="45"/>
+		<br><span id="loginError" class="error">Invalid username and password</span></li>
 	</ul>
-	<p><input type="submit" id="lsubmit" name="login" value="Log in"/></p>
+	<p><input type="submit" id="submitL" name="login" value="Log in"/></p>
 	</form>
 </div>
 <div id="register">
 	<h2> New user? </h2>
 	<p> Register below to create a profile. </p>
-	<form method="post" action="login.html">
+	<form id="formR" method="post" action="login.html">
 	<p>
-		<input id="fn" type="text" name="firstname" placeholder="First Name" size="20"/>
-		<input id="ln" type="text" name="lastname" placeholder="Last Name" size="20"/>
+		<input id="fn" type="text" name="fn" placeholder="First Name" size="20"/>
+		<input id="ln" type="text" name="ln" placeholder="Last Name" size="20"/>
+		<span class="error">These fields are required</span>
 	</p>
 	<ul>
-	<li><input type="text" name="user" placeholder="Username" size="45"/></li>
-	<li><input type="password" name="pass" placeholder="Password" size="45"/></li>
+	<li><input type="text" id="user" name="user" placeholder="Username" size="45"/>
+		<span class="error">A valid username is required</span></li>
+	<li><input type="password" id="pass" name="pass" placeholder="Password" size="45"/>
+		<span class="error">A valid password is required</span></li>
 	</ul>
-	<p><input type="submit" id="rsubmit" name="register" value="Register"/></p>
+	<p><input type="submit" id="submitR" name="register" value="Register"/></p>
 	</form>
 </div>
 
 </div>
 </html>
+
+<script type="text/javascript">	
+	$(document).ready(function(){
+		$("#fn").on("input", function(){
+			var input=$(this);
+			var first=input.val();
+			if(first){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});
+		$("#ln").on("input", function(){
+			var input=$(this);
+			var last=input.val();
+			if(last){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});
+		$("#user").on("input", function(){
+			var input=$(this);
+			var id=input.val();
+			if(id){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});
+		$("#pass").on("input", function(){
+			var input=$(this);
+			var pw=input.val();
+			if(pw){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});
+		$("#id").on("input", function(){
+			var input=$(this);
+			var id=input.val();
+			if(id){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});
+		$("#pw").on("input", function(){
+			var input=$(this);
+			var pw=input.val();
+			if(pw){
+				input.removeClass("invalid").addClass("valid");
+			}
+			else{
+				input.removeClass("valid").addClass("invalid");
+			}
+		});
+		
+		$("#submitR").click(function(event){
+			var go=true;
+			var form=$("#formR").serializeArray();
+			for(var input in form){
+				var val=$("#"+form[input]['name']);
+				var valid=val.hasClass("valid");
+				var elmnt=$("span", val.parent());
+				if(!valid){
+					elmnt.removeClass("error").addClass("error_show");
+					go=false;
+				}
+				else{
+					elmnt.removeClass("error_show").addClass("error");
+				}
+			}
+			if(!go){
+				event.preventDefault();
+			}
+		});
+		$("#submitL").click(function(event){
+			var go=true;
+			var form=$("#formL").serializeArray();
+			for(var input in form){
+			var user=$("#"+form[0]['name']);
+			var validUser=user.hasClass("valid");
+			var pass=$("#"+form[1]['name']);
+			var validPass=pass.hasClass("valid");
+			var error = $("span", pass.parent());
+			if(!validUser || !validPass){
+				error.removeClass("error").addClass("error_show");
+					go=false;
+				}
+				else{
+					error.removeClass("error_show").addClass("error");
+				}
+			}
+			if(!go){
+				event.preventDefault();
+			}
+		});
+	})
+</script>
+
+
