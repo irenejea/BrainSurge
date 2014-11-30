@@ -30,7 +30,7 @@
 	<b><i>Personality Quizzes</i></b>
 	<ul><li><a href="./mb.html">MBTI</a></li>
 	    <li><a href="./Big5.html">The Big Five</a></li>
-	    <li><a href="./tybeAB.html">Type A/B</a></li>
+	    <li><a href="./typeAB.html">Type A/B</a></li>
 	</ul>
 	<br>
 	<b><i>Your Profile</i></b>
@@ -66,16 +66,27 @@
 </div>
 
 <div id="login">
-	<form method="post" action="">
-	<br>
-	<b>Login Here!</b><br>
-	<table>
-	<tr><td>Username:</td><td><input type="text" name="username" size="15"></td></tr>
-	<tr><td>Password:</td><td><input type="password" name="password" size="15"></td></tr>
+	<form method="post" action="login.html" onsubmit="return validateL()">
+	<b>Login Here!</b>
+	<table id="loginTable">
+	<tr><td>Username:</td><td><input type="text" name="username" id="id" size="15"></td></tr>
+	<tr><td>Password:</td><td><input type="password" name="password" id="pw" size="15"></td></tr>
 	</table>
 	<input class="btn" type="submit" value="Login" name="login"><br>
 	<br>New User? Register <a href="login.html"><u>Here</u></a>
 	</form>
+	
+<script type="text/javascript">
+	function validateL(){
+		var user = document.getElementById("id");
+		var pass = document.getElementById("pw");
+		if(user.value == "" || pass.value == ""){
+			alert("Please fill in all fields to login");
+			return false;
+		}
+	}
+</script>
+
 </div>
 
 <div id="MB">
@@ -172,5 +183,4 @@
 </div>
 
 </div>
-</body>
 </html>
