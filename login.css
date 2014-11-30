@@ -13,9 +13,9 @@
 	height: 30em;
 }
 img{
-	padding-bottom: 5px;
-	width: 164px;
-	height: 133px;
+	padding-bottom: .2em;
+	width: 7em;
+	height: 5.5em;
 }
 #login{
 	float: left;
@@ -68,8 +68,8 @@ h2{
 	font-size: small;
 }
 #loginError{
-	position: absolute;
-	left: 26.5em;
+	float: left;
+	margin-left: 8em;
 	margin-top: -2em;
 }
 input.invalid{
@@ -78,16 +78,6 @@ input.invalid{
 input.valid{
 	border: 2px solid green;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
