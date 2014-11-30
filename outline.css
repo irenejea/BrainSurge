@@ -1,0 +1,114 @@
+a:link{
+	color:#003366;
+	text-decoration: none;
+}
+a:visited{
+	color:#003366;
+ 	text-decoration: none;
+}
+a:hover{
+	color: #989898;
+}
+html{
+	background-color: #007A7A;
+}
+#container{
+	margin: 0 auto 0;
+	height: 70em;
+	width: 80em;
+	overflow: auto;
+}
+#logo{
+	float: left;
+	margin: 1em 1em;
+	width: 13.75em;
+	height: 11.25em;
+}
+#title{
+	float: left;
+	width: 41em;
+	height: 11em;
+	background-color: #FFE2AA;
+	color:#003366;
+	margin: 1em 1em;
+}
+h1{
+	text-align: center;
+	font-size: 5em;
+	margin-top: .1em;
+	letter-spacing:7px;
+	line-height: 93%;
+	font-family: Century Gothic, Verdana;
+}
+#info{
+	float: left;
+	padding: .6em;
+	margin: 14em 0 0 -61em;
+	width: 14.7em;
+	height: 52em;
+	background-color: #FFE2AA;
+	color:#003366;
+	font-family: Verdana;
+	font-size: .95em;
+}
+
+#info_title{
+	font-size: 1.5em;
+	text-align: center;
+	border: dotted 2px #003366;
+}
+
+dt{
+	font-size: 1em;
+	text-decoration: underline;
+	line-height: 100%;
+}
+#login{	
+	text-align: center;
+	float: right;
+	margin: 2em 5em 0 0;
+	width: 18em;
+	height: 11em;
+	padding: 1em 0 0 1em;
+	background-color: #FFE2AA;
+	color:#003366;
+	font-family: Verdana;
+	font-size: small;
+	border-radius: 25px;
+}
+#loginTable{
+	margin-top: .5em;
+}
+.btn{
+	border-radius: 5px 6px 6px 6px;
+	float: right;
+	height: 2em;
+	width: 8.6em;
+	margin-right: 2.2em;
+	background-color: #007A7A;
+	color: white;
+}
+td{
+	color:#003366;
+	text-align: center;
+	font-family: Verdana;
+	font-size: 15px;
+}
+#footer{
+	text-align: center;
+	margin: 88em auto 0 auto;
+	width: 98%;
+	height: 60px;
+	color:#003a74;
+	font-family: Verdana;
+	letter-spacing: 3px;
+	font-size: 12px;
+	border-top: solid .1em;
+}
+
+
+
+
+
+
+
