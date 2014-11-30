@@ -1,38 +1,37 @@
 <html>
 <head>
 <title>About the Authors</title>
-<link rel="stylesheet" href="./home.css" type="text/css" name="style1">
+	<link rel = "stylesheet" title = "basic style" type = "text/css"
+	href = "./outline.css" media = "all" />
+	<link rel = "stylesheet" type="text/css" href="./info.css">
 </head>
-<body>
 
+<div id="container">
 <!--<div id="logo"> -->
 	<a href="./home.html"><img src="./logo.png" id="logo"></a>
 <!-- </div> -->
 
-<div id="infohead">
-	<b>About the Authors</b>
+<div id="title">
+	<h1>About the <br> Authors</h1>
 </div>
-
 
 <div id="info">
 	<center><div id="info_title">Brain Surge Site Navigation</div></center>
 	<br>
-	<br>
 	<b><i>Personality Quizzes</i></b>
 	<ul><li><a href="./mb.html">MBTI</a></li>
-	    <li><a href="./Big5.html">The Big Five</a></li>
-	    <li><a href="./tybeAB.html">Type A/B</a></li>
+	    <li><a href="./big5.html"> The Big Five</a></li>
+	    <li><a href="./typeAB.html">Type A/B</a></li>
 	</ul>
 	<br>
-	<b><i>Your Profile</b></i>
+	<b><i>Your Profile</i></b>
 	<br>
 	<!-- takes them to profile page, or if they aren't logged in, to register/login page-->
 	<center><form method="post" action="./login.html">
 	<input type="submit" value="Profile" name="profile">
 	</form></center>
-	<br>
 
-	<b><i>More Information</b></i>
+	<b><i>More Information</i></b>
 	<dl><dt>Personality Theory</dt>
 		<dd><a href="https://en.wikipedia.org/wiki/Personality_psychology">Personality Psychology</a></dd>
 		<dd><a href="http://drdianehamilton.wordpress.com/2011/12/18/top-18-personality-theorists-including-freud-and-more/">Famous Personality Psychologists</a></dd>
@@ -53,8 +52,19 @@
 	</dl>
 	
 	<b><i>Contact Brain Surge</i></b>
-		<p><a href="./info.html">About Brain Surge and the developers</a></p>
+		<p style="color:gray">About Brain Surge and the developers</p>
+</div>
 
+<div id="login">
+	<form method="post" action="login.html" onsubmit="return validateL()">
+	<b>Login Here!</b>
+	<table id="loginTable">
+	<tr><td>Username:</td><td><input type="text" name="username" id="id" size="15"></td></tr>
+	<tr><td>Password:</td><td><input type="password" name="password" id="pw" size="15"></td></tr>
+	</table>
+	<input class="btn" type="submit" value="Login" name="login"><br>
+	<br>New User? Register <a href="login.html"><u>Here</u></a>
+	</form>
 </div>
 
 <div id="bio">
@@ -73,25 +83,6 @@
 	</div>
 	
 </div>
-<div id="login">
-
-	<br>
-	<form method="post" action="<!-- php login script-->">
-	<center><b>Login Here!</b></center><br>
-	<table>
-	<tr><td>Username:</td><td><input type="text" name="username" size="15"></td></tr>
-	<tr><td>Password:</td><td><input type="password" name"password" size="15"></td></tr>
-	<tr><td><input type="submit" value="Login" name="login"></td>
-		<td><input type="reset" value="Reset"></td></tr>
-	</table>
-	</form>
-	<center><b>New Users Register Here!</b></center><br>
-	<center>
-	<form method="post" action="./login.html">
-	<input type="submit" value="Register" name="register">
-	</form>
-
-</div>
 
 <div id="footer">
 <br>
@@ -99,6 +90,8 @@
 	<a href="./info.html">About the Developers</a></center>
 
 </div>
-	
-</body>
+</div>
 </html>
+
+
+
