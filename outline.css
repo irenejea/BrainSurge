@@ -106,9 +106,14 @@ td{
 	border-top: solid .1em;
 }
 
-
-
-
-
-
-
+#main{
+	float: left;
+        width: 37em;
+        height: 40em;
+        background-color: #FFE2AA;
+        color:#003366;
+        margin: 1em 1em;
+	padding: 2em 2em;
+	font-family: Verdana;
+	text-align: justify;
+}
