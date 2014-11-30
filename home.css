@@ -1,5 +1,19 @@
 /* final project css workspace*/
 
+a:link{
+	color:#003366;
+	text-decoration: none;
+}
+
+a:visited{
+	color:#003366;
+ 	text-decoration: none;
+}
+
+a:hover{
+	color: #989898;
+}
+
 html{
 	background-color: #007A7A;
 }
@@ -29,7 +43,7 @@ html{
 h1{
 	text-align: center;
 	font-size: 5em;
-	margin-top: 0;
+	margin-top: -.1em;
 	letter-spacing:7px;
 	font-family: Century Gothic, Verdana;
 }
@@ -47,7 +61,7 @@ h1{
 
 #info{
 	float: left;
-	margin: 1em 1em 0 1em;
+	margin: auto 1em;
 	padding: .6em;
 	width: 14.7em;
 	height: 52em;
@@ -74,16 +88,26 @@ dt{
 	float: right;
 	margin: -13em 5em 0 0;
 	width: 18em;
-	height: 11em;
+	height: 11.5em;
+	padding: 1em 0 0 1em;
 	background-color: #FFE2AA;
 	color:#003366;
 	font-family: Verdana;
 	font-size: small;
+	border-radius: 25px;
+}
+
+#loginTable{
+	margin-top: .5em;
 }
 .btn{
 	border-radius: 5px 6px 6px 6px ;
 	float: right;
-	margin-right: 2.5em;
+	height: 2em;
+	width: 8.6em;
+	margin-right: 2.2em;
+	background-color: #007A7A;
+	color: white;
 }
 
 #MB{
@@ -174,43 +198,4 @@ td{
 	letter-spacing: 3px;
 	font-size: 12px;
 	border-top: solid .1em;
-}
-
-#bio{
-	font-family: verdana;
-	margin-top: 10em;
-	color: #FFD685;
-	position: absolute;
-	left: 0em;
-	width: 36em;
-	top: 3em;
-}
-#infohead{
-	font-weight: 900;
-	background-color: #FFE2AA;
-	width: 11em;
-	position: absolute;
-	left: 280px;
-	top: 20px;
-	font-family: "century gothic";
-	letter-spacing: 5px;
-	font-size: 5em;
-	color: #003366;
-	text-align: center;
-}
-#bio h2{
-	border-bottom: solid;
-}
-a:link{
-	color:#003366;
-	text-decoration: none;
-}
-
-a:visited{
-	color:#003366;
- 	text-decoration: none;
-}
-
-a:hover{
-	color: #989898;
 }
