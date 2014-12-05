@@ -97,7 +97,7 @@ td{
 #footer{
 	text-align: center;
 	margin: 88em auto 0 auto;
-	width: 98%;
+	width: 96%;
 	height: 60px;
 	color:#003a74;
 	font-family: Verdana;
@@ -109,11 +109,18 @@ td{
 #main{
 	float: left;
         width: 37em;
-        height: 40em;
         background-color: #FFE2AA;
         color:#003366;
         margin: 1em 1em;
 	padding: 2em 2em;
 	font-family: Verdana;
 	text-align: justify;
+}
+
+.quest_head{
+	font-size: 1.15em;
+}
+.quest{
+	font-size: 1.08em;
+	text-decoration: underline;
 }
