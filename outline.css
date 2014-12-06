@@ -119,8 +119,13 @@ td{
 
 .quest_head{
 	font-size: 1.15em;
+	font-weight: bold;
 }
 .quest{
 	font-size: 1.08em;
 	text-decoration: underline;
+}
+.likert{
+	word-spacing: 29em;
+	padding-bottom: 1.1em;
 }
