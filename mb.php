@@ -1,34 +1,51 @@
 <html>
 <head>
-<title>MBTI</title>
-<link rel="stylesheet" href="./outline.css" type="text/css" name="style1">
+	<title>MBTI</title>
+	<link rel="stylesheet" href="./outline.css" type="text/css" name="style1">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
+	<script type="text/javascript">
+		function sticky_relocate() {
+			var window_top = $(window).scrollTop();
+			var div_top = $('#anchor').offset().top;
+			if (window_top > div_top){
+				$('#info').addClass('sticky');
+			}
+			else{
+				$('#info').removeClass('sticky');
+			}
+		}	
+		$(function() {
+			$(window).scroll(sticky_relocate);
+			sticky_relocate();
+		});
+	</script>
 </head>
-<body>
-<div id="container">
 
-	<a href="./home.html"><img src="./logo.png" id="logo"></a>
+<div id="container" style="height: 510em;">
+	<a href="./home.php"><img src="./logo.png" id="logo"></a>
 
 <div id="title">
 	<h1>Myers-Briggs Type Indicator</h1>
 </div>
 
+<div id="anchor"></div>
 <div id="info">
 	<center><div id="info_title">Brain Surge Site Navigation</div></center>
-	<br>
-	<b><i>Personality Quizzes</i></b>
-	<ul><li style="color:gray">MBTI</li>
-	    <li><a href="./big5.html"> The Big Five</a></li>
-	    <li><a href="./typeab.html"> Type A/B </a></li>
+	<h4><i>Personality Quizzes</i></h4>
+	<ul><li style="color: gray">MBTI</li>
+	    <li><a href="./big5.php">The Big Five</a></li>
+	    <li><a href="./typeAB.php">Type A/B</a></li>
 	</ul>
-	<br>
-	<b><i>Your Profile</i></b>
-	<br>
 	<!-- takes them to profile page, or if they aren't logged in, to register/login page-->
-	<center><form method="post" action="./login.html">
-	<input type="submit" value="Profile" name="profile">
-	</form></center>
-
-	<b><i>More Information</i></b>
+<?php 
+	if(!isset($_COOKIE["user"])){
+		print "<a href='login.php'> <h4><i>Your Profile</i></h4></a>";
+	}
+	else{
+		print "<a href='profile.php'> <h4><i>Your Profile</i></h4></a>";
+	}
+?>
+	<h4><i>More Information</h4></i>
 	<dl><dt>Personality Theory</dt>
 		<dd><a href="https://en.wikipedia.org/wiki/Personality_psychology">Personality Psychology</a></dd>
 		<dd><a href="http://drdianehamilton.wordpress.com/2011/12/18/top-18-personality-theorists-including-freud-and-more/">Famous Personality Psychologists</a></dd>
@@ -47,35 +64,78 @@
 		<dd><a href="https://en.wikipedia.org/wiki/Clinical_psychology">Clinical Psychology</a></dd>
 		<dd><a href="https://en.wikipedia.org/wiki/Abnormal_psychology">Abnormal Psychology</a></dd>
 	</dl>
-
 	
-	<b><i>Contact Brain Surge</i></b>
-		<p><a href="./info.html">About Brain Surge and the developers</a></p>
+	<h4><i>Contact Brain Surge</i></h4>
+		<p><a href="./info.php">About Brain Surge and the developers</a></p>
 </div>
-<div id="login">
-	<form method="post" action="login.html" onsubmit="return validateL()">
-	<b>Login Here!</b>
-	<table id="loginTable">
-	<tr><td>Username:</td><td><input type="text" name="username" id="id" size="15"></td></tr>
-	<tr><td>Password:</td><td><input type="password" name="password" id="pw" size="15"></td></tr>
-	</table>
-	<input class="btn" type="submit" value="Login" name="login">
-	<br>
-	<br>New User? Register <a href="login.html"><u>Here</u></a>
-	</form>
-	
-<script type="text/javascript">
-	function validateL(){
-		var user = document.getElementById("id");
-		var pass = document.getElementById("pw");
-		if(user.value == "" || pass.value == ""){
-			alert("Please fill in all fields to login");
-			return false;
-		}
+
+<?php 
+	if(!isset($_COOKIE["user"])){
+		print <<<LOGIN
+			<div id="login">
+				<form method="post" action="mb.php">
+				<b>Login Here!</b>
+				<table id="loginTable">
+				<tr><td>Username:</td><td><input type="text" name="username" id="id" size="15"></td></tr>
+				<tr><td>Password:</td><td><input type="password" name="password" id="pw" size="15"></td></tr>
+				</table>
+				<input class="btn" type="submit" value="Login" name="login" id="submitL">
+				<br>
+				<br>New User? Register <a href="login.php"><u>Here</u></a>
+				</form>
+			</div>
+LOGIN;
 	}
-</script>
-
-</div>
+	else{	
+		print <<<WELCOME
+			<div id="welcome">
+				Welcome back, <a href="profile.php"><u><b>{$_COOKIE["user"]}</b></u></a>
+				<form method="post" action="mb.php"><input type="submit" id="logout" name="logout" value="Log Out"></form>
+			</div>
+WELCOME;
+	}	
+	if(isset($_POST["logout"])){
+		setcookie("user", "", time() - 3600);
+		header("Location: mb.php");
+	}
+	if(isset($_POST["login"])){
+		if(!empty($_POST["username"]) && !empty($_POST["password"])){
+			$un = $_POST["username"];
+			$pw = $_POST["password"];
+			login($un, $pw);
+		}
+		else{
+			echo "<script type = 'text/javascript'>
+				alert('Please fill in both fields to login.') </script>";
+		}
+	}	
+	function login($un, $pw){
+		$host = "fall-2014.cs.utexas.edu";
+		$user = "irenej";
+		$pwd = "Ap+sVVJQbw";
+		$dbs = "cs329e_irenej";
+		$port = "3306";
+		$connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
+		$table = "brainsurge";
+		
+		$result = mysqli_query($connect, "SELECT * from $table where Username = \"$un\"");
+		$row = $result->fetch_row();
+		if(count($row) == 0){
+			echo "<script type = 'text/javascript'>
+				alert('That username is not registered.') </script>";	
+		}
+		else if($row[3] != $pw){
+			echo "<script type = 'text/javascript'>
+				alert('Username and password do not match.') </script>";	
+		}
+		else{	
+			$name = $row[0];
+			setcookie("user", $name);
+			header("Location: mb.php");
+		}
+		mysqli_close($connect);
+	}
+?>
 
 <div id="main">
 
@@ -508,7 +568,9 @@
 	</form>
 
 </div>	
-
+<div id="footer" style="margin-top: 672em">
+	<br><center>BrainSurge.com &copy; 2014 || Mitra Enterprises || Developers: Evan Johnston &amp; Irene Jea <br>
+	<a href="./info.php">About the Developers</a></center>
 </div>
-</body>
+</div>
 </html>
