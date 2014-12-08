@@ -9,7 +9,7 @@
 <div id="container">
 
 <header>
-	<a href="./home.html"><img src="./logo.png" id="logo"></a>
+	<a href="./home.php"><img src="./logo.png" id="logo"></a>
 
 <div id="title">
 	<h1>Brain Surge</h1>
@@ -24,22 +24,22 @@
 
 <div id="info">
 	<center><div id="info_title">Brain Surge Site Navigation</div></center>
-	<br>
-	<b><i>Personality Quizzes</i></b>
-	<ul><li><a href="./mb.html">MBTI</a></li>
-	    <li><a href="./big5.html">The Big Five</a></li>
-	    <li><a href="./typeab.html">Type A/B</a></li>
+	<h4><i>Personality Quizzes</i></h4>
+	<ul><li><a href="./mb.php">MBTI</a></li>
+	    <li><a href="./big5.php">The Big Five</a></li>
+	    <li><a href="./typeAB.php">Type A/B</a></li>
 	</ul>
-	<br>
-	<b><i>Your Profile</i></b>
-	<br>
-	<!-- takes them to profile page, or if they aren't logged in, to register/login page-->
-	<center><form method="post" action="./login.html">
-	<input type="submit" value="Profile" name="profile">
-	</form></center>
-	<br>
 
-	<b><i>More Information</i></b>
+	<!-- takes them to profile page, or if they aren't logged in, to register/login page-->
+<?php 
+	if(!isset($_COOKIE["user"])){
+		print "<a href='login.php'> <h4><i>Your Profile</i></h4></a>";
+	}
+	else{
+		print "<a href='profile.php'> <h4><i>Your Profile</i></h4></a>";
+	}
+?>
+	<h4><i>More Information</h4></i>
 	<dl><dt>Personality Theory</dt>
 		<dd><a href="https://en.wikipedia.org/wiki/Personality_psychology">Personality Psychology</a></dd>
 		<dd><a href="http://drdianehamilton.wordpress.com/2011/12/18/top-18-personality-theorists-including-freud-and-more/">Famous Personality Psychologists</a></dd>
@@ -59,34 +59,77 @@
 		<dd><a href="https://en.wikipedia.org/wiki/Abnormal_psychology">Abnormal Psychology</a></dd>
 	</dl>
 	
-	<b><i>Contact Brain Surge</i></b>
-		<p><a href="./info.html">About Brain Surge and the developers</a></p>
+	<h4><i>Contact Brain Surge</i></h4>
+		<p><a href="./info.php">About Brain Surge and the developers</a></p>
 </div>
 
-<div id="login">
-	<form method="post" action="login.html" onsubmit="return validateL()">
-	<b>Login Here!</b>
-	<table id="loginTable">
-	<tr><td>Username:</td><td><input type="text" name="username" id="id" size="15"></td></tr>
-	<tr><td>Password:</td><td><input type="password" name="password" id="pw" size="15"></td></tr>
-	</table>
-	<input class="btn" type="submit" value="Login" name="login">
-	<br>
-	<br>New User? Register <a href="login.html"><u>Here</u></a>
-	</form>
-	
-<script type="text/javascript">
-	function validateL(){
-		var user = document.getElementById("id");
-		var pass = document.getElementById("pw");
-		if(user.value == "" || pass.value == ""){
-			alert("Please fill in all fields to login");
-			return false;
-		}
+<?php 
+	if(!isset($_COOKIE["user"])){
+		print <<<LOGIN
+			<div id="login">
+				<form method="post" action="home.php">
+				<b>Login Here!</b>
+				<table id="loginTable">
+				<tr><td>Username:</td><td><input type="text" name="username" id="id" size="15"></td></tr>
+				<tr><td>Password:</td><td><input type="password" name="password" id="pw" size="15"></td></tr>
+				</table>
+				<input class="btn" type="submit" value="Login" name="login" id="submitL">
+				<br>
+				<br>New User? Register <a href="login.php"><u>Here</u></a>
+				</form>
+			</div>
+LOGIN;
 	}
-</script>
-
-</div>
+	else{	
+		print <<<WELCOME
+			<div id="welcome">
+				Welcome back, <a href="profile.php"><u><b>{$_COOKIE["user"]}</b></u></a>
+				<form method="post" action="home.php"><input type="submit" id="logout" name="logout" value="Log Out"></form>
+			</div>
+WELCOME;
+	}	
+	if(isset($_POST["logout"])){
+		setcookie("user", "", time() - 3600);
+		header("Location: home.php");
+	}
+	if(isset($_POST["login"])){
+		if(!empty($_POST["username"]) && !empty($_POST["password"])){
+			$un = $_POST["username"];
+			$pw = $_POST["password"];
+			login($un, $pw);
+		}
+		else{
+			echo "<script type = 'text/javascript'>
+				alert('Please fill in both fields to login.') </script>";
+		}
+	}	
+	function login($un, $pw){
+		$host = "fall-2014.cs.utexas.edu";
+		$user = "irenej";
+		$pwd = "Ap+sVVJQbw";
+		$dbs = "cs329e_irenej";
+		$port = "3306";
+		$connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
+		$table = "brainsurge";
+		
+		$result = mysqli_query($connect, "SELECT * from $table where Username = \"$un\"");
+		$row = $result->fetch_row();
+		if(count($row) == 0){
+			echo "<script type = 'text/javascript'>
+				alert('That username is not registered.') </script>";	
+		}
+		else if($row[3] != $pw){
+			echo "<script type = 'text/javascript'>
+				alert('Username and password do not match.') </script>";	
+		}
+		else{	
+			$name = $row[0];
+			setcookie("user", $name);
+			header("Location: home.php");
+		}
+		mysqli_close($connect);
+	}
+?>
 
 <div id="MB">
 <span id="MB_title"><b><u>Myers-Briggs Type Indicator</u></b></span> 
@@ -98,7 +141,7 @@
 	<td><li>Judging vs. Perceiving</li></td></tr>
 	</ul>
 	<tr><td><a href="http://en.wikipedia.org/wiki/Myers-Briggs_Type_Indicator" target="blank">Learn More about the MBTI</a></td>
-	<td><a href="./mb.html">Take this test now!</a></td></tr>
+	<td><a href="./mb.php">Take this test now!</a></td></tr>
 </table></span>
 
 <script>
@@ -124,7 +167,7 @@
 	<td><li>Neuroticism</li></td></tr>
 	</ul>
 	<tr><td><a href="http://en.wikipedia.org/wiki/Big_Five_personality_traits" target="blank">Learn More about the <br>Big 5 Personality Traits</a></td>
-	<td><a href="./big5.html">Take this test now!</a></td></tr>
+	<td><a href="./big5.php">Take this test now!</a></td></tr>
 </table></span>
 	
 <script>
@@ -148,7 +191,7 @@
 	<ul><tr><td ><li>Goal-oriented</li></td>
 		<td><li>Steady worker</li></td></tr>
 	<tr><td><li>"Workaholic"</li></td>
-		<td rowspan="2"><a href="./typeab.html">Take this test now!</a></td>
+		<td rowspan="2"><a href="./typeab.php">Take this test now!</a></td>
 		<td><li>Creative</li></td></tr>
 	<tr><td><li>Competitive</li></td>
 		<td><li>Reflective</li></td></tr></ul>
@@ -178,7 +221,7 @@
 
 <div id="footer">
 	<br><center>BrainSurge.com &copy; 2014 || Mitra Enterprises || Developers: Evan Johnston &amp; Irene Jea <br>
-	<a href="./info.html">About the Developers</a></center>
+	<a href="./info.php">About the Developers</a></center>
 </div>
 
 <!-- references
