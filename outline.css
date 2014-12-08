@@ -12,9 +12,10 @@ a:hover{
 html{
 	background-color: #007A7A;
 }
+
+
 #container{
 	margin: 0 auto 0;
-	height: 70em;
 	width: 80em;
 	overflow: auto;
 }
@@ -37,19 +38,30 @@ h1{
 	font-size: 5em;
 	margin-top: .1em;
 	letter-spacing:7px;
-	line-height: 93%;
+	line-height: 97%;
 	font-family: Century Gothic, Verdana;
 }
 #info{
 	float: left;
 	padding: .6em;
-	margin: 14em 0 0 -61em;
+	position: absolute;
+	top: 14.5em;
+	margin-left: 1em;
 	width: 14.7em;
 	height: 52em;
 	background-color: #FFE2AA;
 	color:#003366;
 	font-family: Verdana;
-	font-size: .95em;
+	font-size: .95em;	
+}
+#anchor{
+	float: left;
+	margin: 12em 0 0 -40em;
+	font-size: large;
+}
+#info.sticky{
+	position: fixed;
+	top: 0;
 }
 
 #info_title{
@@ -88,6 +100,30 @@ dt{
 	background-color: #007A7A;
 	color: white;
 }
+#welcome{
+	text-align: center;
+	float: right;
+	margin: 6em 4em 0 0;
+	width: 17em;
+	height: 2em;
+	padding-top: 1em;
+	background-color: #FFE2AA;
+	color:#003366;
+	font-family: Verdana;
+	border-radius: 25px;
+}
+#logout{
+	float: right;
+	height: 2em;
+	width: 5em;
+	margin-right: 3em;
+	margin-top: .6em;
+	background-color: #007A7A;
+	border: none;
+	color: white;
+	cursor: pointer;
+}
+
 td{
 	color:#003366;
 	text-align: center;
@@ -96,7 +132,7 @@ td{
 }
 #footer{
 	text-align: center;
-	margin: 88em auto 0 auto;
+	margin: 0 auto;
 	width: 96%;
 	height: 60px;
 	color:#003a74;
