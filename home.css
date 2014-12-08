@@ -110,6 +110,30 @@ dt{
 	color: white;
 }
 
+#welcome{
+	text-align: center;
+	float: right;
+	margin: -10em 4em 0 0;
+	width: 17em;
+	height: 2em;
+	padding-top: 1em;
+	background-color: #FFE2AA;
+	color: #003366;
+	font-family: Verdana;
+	border-radius: 25px;
+}
+#logout{
+	float: right;
+	height: 2em;
+	width: 5em;
+	margin-right: 3em;
+	margin-top: .6em;
+	background-color: #007A7A;
+	border: none;
+	color: white;
+	cursor: pointer;
+}
+
 #MB{
 	margin: 1em .5em 0 .5em;
 	float: left;
