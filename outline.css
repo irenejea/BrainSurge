@@ -93,12 +93,15 @@ dt{
 }
 .btn{
 	border-radius: 5px 6px 6px 6px;
+	height: 4em;
+	background-color: #007A7A;
+	color: white;
+}
+#submitL{
 	float: right;
 	height: 2em;
 	width: 8.6em;
 	margin-right: 2.2em;
-	background-color: #007A7A;
-	color: white;
 }
 #welcome{
 	text-align: center;

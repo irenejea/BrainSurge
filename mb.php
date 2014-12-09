@@ -141,7 +141,7 @@ WELCOME;
 
 	<center><h2>MBTI: please fill out all questions then submit</h2></center>
 
-	<form id="mbti" method="post" action="">
+	<form id="mbti" method="post" action="./mb_results.php">
 
 	<span class="quest_head">Question 1</span><br>
 	<span class="quest">At a party do you:</span><br>

@@ -145,7 +145,7 @@ WELCOME;
 		<h3>Please complete the questions below</h3><br>
 		<br></center>
 
-	<form method="post" action="">
+	<form method="post" action="./type_results.php">
 		
 	<span class="quest_head">1. When you are faced with an unfamiliar problem, what do you usually do?</span><br> 
 	<input value ="20" type="radio" required name="q1">Address the problem immediately<br>
@@ -280,7 +280,7 @@ WELCOME;
   	<input value ="0" type="radio" required name="q20">I don't exercise<br>  
 	<br>
 
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" name="typeAB">
 	<input type="reset" value="Reset">
 	</form>
 

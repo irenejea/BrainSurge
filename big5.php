@@ -158,13 +158,13 @@ WELCOME;
 		<h4>Rate the following statements by your level of agreement with them</h4>
 		<h2>I...</h2>
 
-	<form id="big5" method="post" action="">
+	<form id="big5" method="post" action="./big_results.php">
 
 	<div>
 	<span class="quest_head">am the life of the party</span>
 	<br>
 	<br>
-	<input type="hidden" id="q1" value="3">
+	<input type="hidden" name="q1" value="3">
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -176,7 +176,7 @@ WELCOME;
 	<span class="quest_head">feel little concern for others</span>
 	<br>
 	<br>
-	<input type="hidden" id="q2" value="3" >
+	<input type="hidden" name="q2" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -188,7 +188,7 @@ WELCOME;
 	<span class="quest_head">am always prepared</span>
 	<br>
 	<br>
-	<input type="hidden" id="q3" value="3" >
+	<input type="hidden" name="q3" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -200,7 +200,7 @@ WELCOME;
 	<span class="quest_head">get stressed out easily</span>
 	<br>
 	<br>
-	<input type="hidden" id="q4" value="3" >
+	<input type="hidden" name="q4" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -212,7 +212,7 @@ WELCOME;
 	<span class="quest_head">have a rich vocabulary</span>
 	<br>
 	<br>
-	<input type="hidden" id="q5" value="3" >
+	<input type="hidden" name="q5" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -224,7 +224,7 @@ WELCOME;
 	<span class="quest_head">don't talk much</span>
 	<br>
 	<br>
-	<input type="hidden" id="q6" value="3" >
+	<input type="hidden" name="q6" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -236,7 +236,7 @@ WELCOME;
 	<span class="quest_head">am interested in people</span>
 	<br>
 	<br>
-	<input type="hidden" id="q7" value="3" >
+	<input type="hidden" name="q7" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -248,7 +248,7 @@ WELCOME;
 	<span class="quest_head">leave my belongings around</span>
 	<br>
 	<br>
-	<input type="hidden" id="q8" value="3" >
+	<input type="hidden" name="q8" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -260,7 +260,7 @@ WELCOME;
 	<span class="quest_head">am relaxed most of the time</span>
 	<br>
 	<br>
-	<input type="hidden" id="q9" value="3" >
+	<input type="hidden" name="q9" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -272,7 +272,7 @@ WELCOME;
 	<span class="quest_head">have difficulty understanding abstract ideas</span>
 	<br>
 	<br>
-	<input type="hidden" id="q10" value="3" >
+	<input type="hidden" name="q10" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -284,7 +284,7 @@ WELCOME;
 	<span class="quest_head">feel comfortable around people</span>
 	<br>
 	<br>
-	<input type="hidden" id="q11" value="3" >
+	<input type="hidden" name="q11" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -296,7 +296,7 @@ WELCOME;
 	<span class="quest_head">insult people</span>
 	<br>
 	<br>
-	<input type="hidden" id="q12" value="3" >
+	<input type="hidden" name="q12" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -308,7 +308,7 @@ WELCOME;
 	<span class="quest_head">pay attentino to details</span>
 	<br>
 	<br>
-	<input type="hidden" id="q13" value="3" >
+	<input type="hidden" name="q13" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -320,7 +320,7 @@ WELCOME;
 	<span class="quest_head">worry about things</span>
 	<br>
 	<br>
-	<input type="hidden" id="q14" value="3" >
+	<input type="hidden" name="q14" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -332,7 +332,7 @@ WELCOME;
 	<span class="quest_head">have a vivid imagination</span>
 	<br>
 	<br>
-	<input type="hidden" id="q15" value="3" >
+	<input type="hidden" name="q15" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -344,7 +344,7 @@ WELCOME;
 	<span class="quest_head">keep in the background</span>
 	<br>
 	<br>
-	<input type="hidden" id="q16" value="3" >
+	<input type="hidden" name="q16" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -356,7 +356,7 @@ WELCOME;
 	<span class="quest_head">sympathize with others' feelings</span>
 	<br>
 	<br>
-	<input type="hidden" id="q17" value="3" >
+	<input type="hidden" name="q17" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -368,7 +368,7 @@ WELCOME;
 	<span class="quest_head">make a mess of things</span>
 	<br>
 	<br>
-	<input type="hidden" id="q18" value="3" >
+	<input type="hidden" name="q18" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -380,7 +380,7 @@ WELCOME;
 	<span class="quest_head">seldom feel blue</span>
 	<br>
 	<br>
-	<input type="hidden" id="q19" value="3" >
+	<input type="hidden" name="q19" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -392,7 +392,7 @@ WELCOME;
 	<span class="quest_head">am not interested in abstract ideas</span>
 	<br>
 	<br>
-	<input type="hidden" id="q20" value="3" >
+	<input type="hidden" name="q20" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -404,7 +404,7 @@ WELCOME;
 	<span class="quest_head">start conversations</span>
 	<br>
 	<br>
-	<input type="hidden" id="q21" value="3" >
+	<input type="hidden" name="q21" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -416,7 +416,7 @@ WELCOME;
 	<span class="quest_head">am not interested in other peoples' problems</span>
 	<br>
 	<br>
-	<input type="hidden" id="q22" value="3" >
+	<input type="hidden" name="q22" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -428,7 +428,7 @@ WELCOME;
 	<span class="quest_head">get chores done right away</span>
 	<br>
 	<br>
-	<input type="hidden" id="q23" value="3" >
+	<input type="hidden" name="q23" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -440,7 +440,7 @@ WELCOME;
 	<span class="quest_head">am easily disturbed</span>
 	<br>
 	<br>
-	<input type="hidden" id="q24" value="3" >
+	<input type="hidden" name="q24" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -452,7 +452,7 @@ WELCOME;
 	<span class="quest_head">have exellent ideas</span>
 	<br>
 	<br>
-	<input type="hidden" id="q25" value="3" >
+	<input type="hidden" name="q25" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -464,7 +464,7 @@ WELCOME;
 	<span class="quest_head">have little to say</span>
 	<br>
 	<br>
-	<input type="hidden" id="q26" value="3" >
+	<input type="hidden" name="q26" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -476,7 +476,7 @@ WELCOME;
 	<span class="quest_head">have a soft heart</span>
 	<br>
 	<br>
-	<input type="hidden" id="q27" value="3" >
+	<input type="hidden" name="q27" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -488,7 +488,7 @@ WELCOME;
 	<span class="quest_head">often forget to put things back in their proper place</span>
 	<br>
 	<br>
-	<input type="hidden" id="q28" value="3" >
+	<input type="hidden" name="q28" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -500,7 +500,7 @@ WELCOME;
 	<span class="quest_head">get upset easily</span>
 	<br>
 	<br>
-	<input type="hidden" id="q29" value="3" >
+	<input type="hidden" name="q29" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -512,7 +512,7 @@ WELCOME;
 	<span class="quest_head">do not have a good imagination</span>
 	<br>
 	<br>
-	<input type="hidden" id="q30" value="3" >
+	<input type="hidden" name="q30" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -524,7 +524,7 @@ WELCOME;
 	<span class="quest_head">talk to a lot of different people at parties</span>
 	<br>
 	<br>
-	<input type="hidden" id="q31" value="3" >
+	<input type="hidden" name="q31" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -536,7 +536,7 @@ WELCOME;
 	<span class="quest_head">am not really interested in others</span>
 	<br>
 	<br>
-	<input type="hidden" id="q32" value="3" >
+	<input type="hidden" name="q32" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -548,7 +548,7 @@ WELCOME;
 	<span class="quest_head">like order</span>
 	<br>
 	<br>
-	<input type="hidden" id="q33" value="3" >
+	<input type="hidden" name="q33" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -560,7 +560,7 @@ WELCOME;
 	<span class="quest_head">change my mood frequently</span>
 	<br>
 	<br>
-	<input type="hidden" id="q34" value="3" >
+	<input type="hidden" name="q34" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -572,7 +572,7 @@ WELCOME;
 	<span class="quest_head">am quick to understand things</span>
 	<br>
 	<br>
-	<input type="hidden" id="q35" value="3" >
+	<input type="hidden" name="q35" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -584,7 +584,7 @@ WELCOME;
 	<span class="quest_head">don't like to draw attention to myself</span>
 	<br>
 	<br>
-	<input type="hidden" id="q36" value="3" >
+	<input type="hidden" name="q36" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -596,7 +596,7 @@ WELCOME;
 	<span class="quest_head">take time out for others</span>
 	<br>
 	<br>
-	<input type="hidden" id="q37" value="3" >
+	<input type="hidden" name="q37" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -608,7 +608,7 @@ WELCOME;
 	<span class="quest_head">shirk my duties</span>
 	<br>
 	<br>
-	<input type="hidden" id="q38" value="3" >
+	<input type="hidden" name="q38" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -620,7 +620,7 @@ WELCOME;
 	<span class="quest_head">have frequent mood swings</span>
 	<br>
 	<br>
-	<input type="hidden" id="q39" value="3" >
+	<input type="hidden" name="q39" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -632,7 +632,7 @@ WELCOME;
 	<span class="quest_head">use difficult words</span>
 	<br>
 	<br>
-	<input type="hidden" id="q40" value="3" >
+	<input type="hidden" name="q40" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -644,7 +644,7 @@ WELCOME;
 	<span class="quest_head">don't mind being the center of attention</span>
 	<br>
 	<br>
-	<input type="hidden" id="q41" value="3" >
+	<input type="hidden" name="q41" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -656,7 +656,7 @@ WELCOME;
 	<span class="quest_head">feel others' emotions</span>
 	<br>
 	<br>
-	<input type="hidden" id="q42" value="3" >
+	<input type="hidden" name="q42" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -668,7 +668,7 @@ WELCOME;
 	<span class="quest_head">follow a schedule</span>
 	<br>
 	<br>
-	<input type="hidden" id="q43" value="3" >
+	<input type="hidden" name="q43" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -680,7 +680,7 @@ WELCOME;
 	<span class="quest_head">get irritated easily</span>
 	<br>
 	<br>
-	<input type="hidden" id="q44" value="3" >
+	<input type="hidden" name="q44" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -692,7 +692,7 @@ WELCOME;
 	<span class="quest_head">spend time reflecting on things</span>
 	<br>
 	<br>
-	<input type="hidden" id="q45" value="3" >
+	<input type="hidden" name="q45" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -704,7 +704,7 @@ WELCOME;
 	<span class="quest_head">am quiet around strangers</span>
 	<br>
 	<br>
-	<input type="hidden" id="q46" value="3" >
+	<input type="hidden" name="q46" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -716,7 +716,7 @@ WELCOME;
 	<span class="quest_head">make people feel at ease</span>
 	<br>
 	<br>
-	<input type="hidden" id="q47" value="3" >
+	<input type="hidden" name="q47" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -728,7 +728,7 @@ WELCOME;
 	<span class="quest_head">am exacting in my work</span>
 	<br>
 	<br>
-	<input type="hidden" id="q48" value="3" >
+	<input type="hidden" name="q48" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -740,7 +740,7 @@ WELCOME;
 	<span class="quest_head">often feel blue</span>
 	<br>
 	<br>
-	<input type="hidden" id="q49" value="3" >
+	<input type="hidden" name="q49" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
@@ -752,7 +752,7 @@ WELCOME;
 	<span class="quest_head">am full of ideas</span>
 	<br>
 	<br>
-	<input type="hidden" id="q50" value="3" >
+	<input type="hidden" name="q50" value="3" >
 	<div class="slider"></div>
 <span class="likert">Disagree Agree</span> 
 	<br>
