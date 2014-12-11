@@ -92,35 +92,45 @@ LOGIN;
 	else{	
 		print <<<WELCOME
 			<div id="welcome">
-				Welcome back, <a href="profile.php"><u><b>{$_COOKIE["user"]}</b></u></a>
+				Welcome back, <a href="profile.php"><u><b>{$_COOKIE["first"]}</b></u></a>
 				<form method="post" action="big_results.php"><input type="submit" id="logout" name="logout" value="Log Out"></form>
 			</div>
 WELCOME;
 	}	
 	if(isset($_POST["logout"])){
 		setcookie("user", "", time() - 3600);
+		setcookie("first", "", time() - 3600);
 		header("Location: big_results.php");
 	}
 	if(isset($_POST["login"])){
-		if(!empty($_POST["username"]) && !empty($_POST["password"])){
-			$un = $_POST["username"];
-			$pw = $_POST["password"];
-			login($un, $pw);
-		}
-		else{
-			echo "<script type = 'text/javascript'>
-				alert('Please fill in both fields to login.') </script>";
-		}
-	}	
-	function login($un, $pw){
-		$host = "fall-2014.cs.utexas.edu";
-		$user = "irenej";
-		$pwd = "Ap+sVVJQbw";
-		$dbs = "cs329e_irenej";
-		$port = "3306";
-		$connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
-		$table = "brainsurge";
-		
+                if(!empty($_POST["username"]) && !empty($_POST["password"])){
+                $un = purge($_POST["username"]);
+                $pw = purge($_POST["password"]);
+                $pw_protected = crypt($pw,$un);
+		login($un, $pw_protected);
+                }
+                else{
+                        echo "<script type = 'text/javascript'>
+                                alert('Please fill in both fields to login.') </script>";
+                }
+        }
+        //Dr. Mitra's basic purge function
+        function purge ($str){
+                $purged_str = preg_replace("/\W/", "", $str);
+                return $purged_str;
+        }
+        function login($un, $pw){
+                $host = "fall-2014.cs.utexas.edu";
+                $user = "irenej";
+                $pwd = "Ap+sVVJQbw";
+                $dbs = "cs329e_irenej";
+                $port = "3306";
+                $connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
+                $table = "brainsurge";
+
+                $un=mysqli_real_escape_string($connect, $un);
+                $pw=mysqli_real_escape_string($connect, $pw);
+	
 		$result = mysqli_query($connect, "SELECT * from $table where Username = \"$un\"");
 		$row = $result->fetch_row();
 		if(count($row) == 0){
@@ -133,7 +143,8 @@ WELCOME;
 		}
 		else{	
 			$name = $row[0];
-			setcookie("user", $name);
+			setcookie("first", $name);
+			setcookie("user", $un);
 			header("Location: big_results.php");
 		}
 		mysqli_close($connect);
@@ -145,8 +156,6 @@ WELCOME;
 	<?php
 
 	function score(){
-
-	$type="";
 
 	$o=8;
 	$c=14;
@@ -209,24 +218,24 @@ WELCOME;
 		}
 
 	}
+	$o=floor($o/40*100);
+        $c=floor($c/40*100);
+        $e=floor($e/40*100);
+        $a=floor($a/40*100);
+        $n=floor($n/40*100);
+
 	return (array($o,$c,$e,$a,$n));
 	}
 
 	function results(){
 
 		$res=score();		
-		$types=array();
 
-		for($i=0; $i<5; $i++){
-			$perc=$res[$i]/40*100;
-			array_push($types, $perc);
-		}
-
-		$str=$types[0]."% on Openness to Experience<br><br>".
-			$types[1]."% on Conscientiousness<br><br>".
-			$types[2]."% on Extraversion<br><br>".
-			$types[3]."% on Agreeableness<br><br>".
-			$types[4]."% on Neuroticism<br><br>";
+		$str=$res[0]."% on Openness to Experience<br><br>".
+			$res[1]."% on Conscientiousness<br><br>".
+			$res[2]."% on Extraversion<br><br>".
+			$res[3]."% on Agreeableness<br><br>".
+			$res[4]."% on Neuroticism<br><br>";
 		
 	if(!isset($_COOKIE["user"])){
 		$act="./login.php";
@@ -237,17 +246,56 @@ WELCOME;
 print<<<RESULTS
 		<center>Your Big 5 results are<br></center>
 		<h2>$str</h2>
-		<form method="post" action=$act>
-		<center><input class="btn" type="submit" value="Save your results to your profile">
-		</form>
 		<br>
 		<br>
 RESULTS;
-
 	}
 
+	function send_results(){
+                $host = "fall-2014.cs.utexas.edu";
+                //$user = "irenej";
+                //$pwd = "Ap+sVVJQbw";
+                //$dbs = "cs329e_irenej";
+        $user = "evanaj12";
+        $pwd = "_zqAskkb9~";
+        $dbs = "cs329e_evanaj12";
+                $port = "3306";
+                $connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
+                $table = "brainsurge_data";
+
+        if (empty($connect))
+        {
+                die("mysqli_connect failed: " . mysqli_connect_error());
+                return;
+        }
+
+        //print "Connected to ". mysqli_get_host_info($connect) . "<br><hr><br>\n";
+                $res=score();
+
+        $str="";
+        $str.="Conscientiousness <br>".$res[1]."%:";
+        $str.="Extraversion <br>".$res[2]."%:";
+        $str.="Agreeableness <br>".$res[3]."%:";
+        $str.="Neuroticism <br>".$res[4]."%:";
+        $str.="Openness to Experience <br>".$res[0]."%";
+
+        $un=$_COOKIE["user"];
+
+        $result = mysqli_query($connect, "SELECT big from $table where user = \"$un\"");
+        $row = $result->fetch_row();
+
+        if(count($row) == 0){
+                $stmt="INSERT INTO $table (big) VALUES ('$str') WHERE user = '$un'";
+                $connect->query($stmt);
+        }else{
+                $stmt="UPDATE $table SET big='$str' WHERE user='$un';";
+                $connect->query($stmt);
+        }
+        mysqli_close($connect);
+}
 
 	if(isset($_POST["big5"])){
+		send_results();
 		results();
 	}else{
 		print<<<ERR

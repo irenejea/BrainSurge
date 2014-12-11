@@ -90,34 +90,44 @@ LOGIN;
 	else{	
 		print <<<WELCOME
 			<div id="welcome">
-				Welcome back, <a href="profile.php"><u><b>{$_COOKIE["user"]}</b></u></a>
+				Welcome back, <a href="profile.php"><u><b>{$_COOKIE["first"]}</b></u></a>
 				<form method="post" action="type_results.php"><input type="submit" id="logout" name="logout" value="Log Out"></form>
 			</div>
 WELCOME;
 	}	
 	if(isset($_POST["logout"])){
+		setcookie("first", "", time() - 3600);
 		setcookie("user", "", time() - 3600);
 		header("Location: type_results.php");
 	}
 	if(isset($_POST["login"])){
 		if(!empty($_POST["username"]) && !empty($_POST["password"])){
-			$un = $_POST["username"];
-			$pw = $_POST["password"];
-			login($un, $pw);
-		}
-		else{
-			echo "<script type = 'text/javascript'>
-				alert('Please fill in both fields to login.') </script>";
-		}
-	}	
-	function login($un, $pw){
-		$host = "fall-2014.cs.utexas.edu";
-		$user = "irenej";
-		$pwd = "Ap+sVVJQbw";
-		$dbs = "cs329e_irenej";
-		$port = "3306";
-		$connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
-		$table = "brainsurge";
+                $un = purge($_POST["username"]);
+                $pw = purge($_POST["password"]);
+                $pw_protected = crypt($pw,$un);
+                login($un, $pw_protected);
+                }
+                else{
+                        echo "<script type = 'text/javascript'>
+                                alert('Please fill in both fields to login.') </script>";
+                }
+        }
+        //Dr. Mitra's basic purge function
+        function purge ($str){
+                $purged_str = preg_replace("/\W/", "", $str);
+                return $purged_str;
+        }
+        function login($un, $pw){
+                $host = "fall-2014.cs.utexas.edu";
+                $user = "irenej";
+                $pwd = "Ap+sVVJQbw";
+                $dbs = "cs329e_irenej";
+                $port = "3306";
+                $connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
+                $table = "brainsurge";
+
+                $un=mysqli_real_escape_string($connect, $un);
+                $pw=mysqli_real_escape_string($connect, $pw);
 		
 		$result = mysqli_query($connect, "SELECT * from $table where Username = \"$un\"");
 		$row = $result->fetch_row();
@@ -131,7 +141,8 @@ WELCOME;
 		}
 		else{	
 			$name = $row[0];
-			setcookie("user", $name);
+			setcookie("user", $un);
+			setcookie("name", $first);
 			header("Location: type_results.php");
 		}
 		mysqli_close($connect);
@@ -151,13 +162,17 @@ WELCOME;
 			$question=$_POST["q".$i];
 			$score=$score+$question;
 		}
-		return $score;
+	
+		$percA=floor($score/380*100);
+		$percB=100-$percA;
+
+		return (array($percA, $percB));
 	}
 
 	function results(){
-		$score=score();
-		$percA=floor($score/380*100);
-		$percB=100-$percA;
+		$res=score();
+		$percA=$res[0];
+		$percB=$res[1];
 
 	if(!isset($_COOKIE["user"])){
 		$act="./login.php";
@@ -171,16 +186,53 @@ WELCOME;
 		<h2>$percA% Type A</h2><br>
 		or
 		<h2>$percB% Type B</h2><br>
-		<form method="post" action=$act>
-		<input class="btn" type="submit" value="Save your results to your profile">
-		</form>
 
 RESULTS;
 
 	}
 
+	function send_results(){
+                $host = "fall-2014.cs.utexas.edu";
+                //$user = "irenej";
+                //$pwd = "Ap+sVVJQbw";
+                //$dbs = "cs329e_irenej";
+        $user = "evanaj12";
+        $pwd = "_zqAskkb9~";
+        $dbs = "cs329e_evanaj12";
+                $port = "3306";
+                $connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
+                $table = "brainsurge_data";
+
+        if (empty($connect))
+        {
+                die("mysqli_connect failed: " . mysqli_connect_error());
+                return;
+        }
+
+        //print "Connected to ". mysqli_get_host_info($connect) . "<br><hr><br>\n";
+                $res=score();
+
+        $str="";
+        $str.="Type A <br>".$res[0]."%:";
+        $str.="Type B<br>".$res[1]."%";
+
+        $un=$_COOKIE["user"];
+
+        $result = mysqli_query($connect, "SELECT ab from $table where user = \"$un\"");
+        $row = $result->fetch_row();
+
+        if(count($row) == 0){
+                $stmt="INSERT INTO $table (ab) VALUES ('$str') WHERE user = '$un'";
+                $connect->query($stmt);
+        }else{
+                $stmt="UPDATE $table SET ab='$str' WHERE user='$un';";
+                $connect->query($stmt);
+        }
+        mysqli_close($connect);
+}
 
 	if(isset($_POST["typeAB"])){
+		send_results();
 		results();
 	}else{
 		print<<<ERR

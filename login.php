@@ -48,16 +48,24 @@
 
 <?php
 	if(isset($_POST["register"])){
-		$first = $_POST["fn"];
-		$last = $_POST["ln"];
-		$un = $_POST["user"];
-		$pw = $_POST["pass"];
-		register($first, $last, $un, $pw);
+		$first = purge($_POST["fn"]);
+		$last = purge($_POST["ln"]);
+		$un = purge($_POST["user"]);
+		$pw = purge($_POST["pass"]);
+		$pw_protected = crypt($pw,$un);
+		register($first, $last, $un, $pw_protected);
 	}
 	if(isset($_POST["login"])){
-		$un = $_POST["id"];
-		$pw = $_POST["pw"];
-		login($un, $pw);
+		$un = purge($_POST["id"]);
+		$pw = purge($_POST["pw"]);
+		$pw_protected = crypt($pw,$un);
+		login($un, $pw_protected);
+	}
+
+	//Dr. Mitra's basic purge function
+	function purge ($str){
+    		$purged_str = preg_replace("/\W/", "", $str);
+    		return $purged_str;
 	}
 
 	function register($first, $last, $un, $pw){
@@ -80,11 +88,28 @@
 		}
 		else{
 			echo "<script type = 'text/javascript'>
-				alert('Thanks for registering. You can now login using your username and password.') </script>";	
-			$stmt = mysqli_prepare ($connect, "INSERT INTO $table VALUES (?, ?, ?, ?)");
-			mysqli_stmt_bind_param ($stmt, 'ssss', $first, $last, $un, $pw);
-			mysqli_stmt_execute($stmt);
-			mysqli_stmt_close($stmt);
+				alert('Thanks for registering. You can now login using your username and password.') </script>";
+			$first=mysqli_real_escape_string($connect, $first);
+			$last=mysqli_real_escape_string($connect, $last);
+			$un=mysqli_real_escape_string($connect, $un);
+			$pw=mysqli_real_escape_string($connect, $pw);
+			
+			$stmt1 = mysqli_prepare ($connect, "INSERT INTO $table VALUES (?, ?, ?, ?)");
+			mysqli_stmt_bind_param ($stmt1, 'ssss', $first, $last, $un, $pw);
+			mysqli_stmt_execute($stmt1);
+			mysqli_stmt_close($stmt1);
+
+		$host1 = "fall-2014.cs.utexas.edu";
+		$user1 = "evanaj12";
+		$pwd1 = "_zqAskkb9~";
+		$dbs1 = "cs329e_evanaj12";
+		$port1 = "3306";
+		$connect1 = mysqli_connect ($host1, $user1, $pwd1, $dbs1, $port1);
+
+		$stmt2="INSERT INTO brainsurge_data (user) VALUES ('$un')";
+        	$connect1->query($stmt2);
+		mysqli_close($connect1);
+
 		}
 		mysqli_close($connect);
 	}
@@ -96,6 +121,9 @@
 		$port = "3306";
 		$connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
 		$table = "brainsurge";
+
+		$un=mysqli_real_escape_string($connect, $un);
+		$pw=mysqli_real_escape_string($connect, $pw);
 		
 		$result = mysqli_query($connect, "SELECT * from $table where Username = \"$un\"");
 		$row = $result->fetch_row();
@@ -108,20 +136,11 @@
 				alert('Username and password do not match.') </script>";	
 		}
 		else{	
-			setcookie("user", $un);
+			$name = $row[0];
+                        setcookie("user", $un);
+                        setcookie("first", $name);
 			header("Location: home.php");
 		}
 		mysqli_close($connect);
 	}
 ?>
-
-
-
-
-
-
-
-
-
-
-

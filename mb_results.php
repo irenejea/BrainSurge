@@ -89,26 +89,33 @@ LOGIN;
 	else{	
 		print <<<WELCOME
 			<div id="welcome">
-				Welcome back, <a href="profile.php"><u><b>{$_COOKIE["user"]}</b></u></a>
+				Welcome back, <a href="profile.php"><u><b>{$_COOKIE["first"]}</b></u></a>
 				<form method="post" action="mb.php"><input type="submit" id="logout" name="logout" value="Log Out"></form>
 			</div>
 WELCOME;
 	}	
 	if(isset($_POST["logout"])){
 		setcookie("user", "", time() - 3600);
+		setcookie("first", "", time() - 3600);
 		header("Location: mb_results.php");
 	}
 	if(isset($_POST["login"])){
 		if(!empty($_POST["username"]) && !empty($_POST["password"])){
-			$un = $_POST["username"];
-			$pw = $_POST["password"];
-			login($un, $pw);
+                $un = purge($_POST["username"]);
+                $pw = purge($_POST["password"]);
+                $pw_protected = crypt($pw,$un);
+                login($un, $pw_protected);
 		}
 		else{
 			echo "<script type = 'text/javascript'>
 				alert('Please fill in both fields to login.') </script>";
 		}
-	}	
+	}
+        //Dr. Mitra's basic purge function
+        function purge ($str){
+                $purged_str = preg_replace("/\W/", "", $str);
+                return $purged_str;
+        }
 	function login($un, $pw){
 		$host = "fall-2014.cs.utexas.edu";
 		$user = "irenej";
@@ -118,6 +125,9 @@ WELCOME;
 		$connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
 		$table = "brainsurge";
 		
+	        $un=mysqli_real_escape_string($connect, $un);
+                $pw=mysqli_real_escape_string($connect, $pw);
+
 		$result = mysqli_query($connect, "SELECT * from $table where Username = \"$un\"");
 		$row = $result->fetch_row();
 		if(count($row) == 0){
@@ -130,7 +140,8 @@ WELCOME;
 		}
 		else{	
 			$name = $row[0];
-			setcookie("user", $name);
+			setcookie("first", $name);
+			setcookie("user", $un);
 			header("Location: mb_results.php");
 		}
 		mysqli_close($connect);
@@ -157,7 +168,7 @@ WELCOME;
 	$j=0;
 	$p=0;
 
-	for($k=1; $k<71; $k++){
+	for($k=1; $k<9; $k++){
 	
 		$question=$_POST["q".$k];
 		if($k%7===1){
@@ -219,27 +230,27 @@ WELCOME;
 	}
 
 	if($e>$i){
-		$type.="E ";
+		$type.="E, ";
 	}elseif($e===$i){
-		$type.="E/I ";
+		$type.="E/I, ";
 	}else{
-		$type.="I ";
+		$type.="I, ";
 	}
 
 	if($s>$n){
-		$type.="S ";
+		$type.="S, ";
 	}elseif($s===$n){
-		$type.="S/N ";
+		$type.="S/N, ";
 	}else{
-		$type.="N ";
+		$type.="N, ";
 	}
 
 	if($t>$f){
-		$type.="T ";
+		$type.="T, ";
 	}elseif($t===$f){
-		$type.="T/F ";
+		$type.="T/F, ";
 	}else{
-		$type.="F ";
+		$type.="F, ";
 	}
 
 	if($j>$p){
@@ -250,6 +261,19 @@ WELCOME;
 		$type.="P";
 	}
 
+	//turns values into percents
+	$e=floor($e/10*100);
+	$i=floor($i/10*100);
+
+	$s=floor($s/20*100);
+	$n=floor($n/20*100);
+
+	$t=floor($t/20*100);
+	$f=floor($f/20*100);
+
+	$j=floor($j/20*100);
+	$p=floor($p/20*100);
+
 	return (array($type,$e,$i,$s,$n,$t,$f,$j,$p));
 
 	}
@@ -258,7 +282,7 @@ WELCOME;
 
 		$res=score();
 		$type=$res[0];
-		
+		$data=array_slice($res, 1);
 
 		$nums="";
 		for($i=1; $i<9; $i++){
@@ -275,15 +299,62 @@ WELCOME;
 
 		<center>Your MBTI results are<br>
 		<h1>$type</h1>
-		<form method="post" action=$act>
-		<input class="btn" type="submit" value="Save your results to your profile">
-		</form>
 
 RESULTS;
 
 	}
 
+	function send_results(){
+		$host = "fall-2014.cs.utexas.edu";
+		//$user = "irenej";
+		//$pwd = "Ap+sVVJQbw";
+		//$dbs = "cs329e_irenej";
+        $user = "evanaj12";
+        $pwd = "_zqAskkb9~";
+        $dbs = "cs329e_evanaj12";
+        	$port = "3306";
+		$connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
+		$table = "brainsurge_data";
+		
+        if (empty($connect))
+        {
+                die("mysqli_connect failed: " . mysqli_connect_error());
+                return;
+        }
+
+        //print "Connected to ". mysqli_get_host_info($connect) . "<br><hr><br>\n";
+		$res=score();
+		$type=$res[0];
+		$data=array_slice($res, 1);
+
+	$str="";
+	$str.=$type.":";
+	$str.="Extraversion <br>".$data[0]."%:";
+	$str.="Introversion <br>".$data[1]."%:";
+	$str.="Sensing <br>".$data[2]."%:";
+	$str.="Intuition <br>".$data[3]."%:";
+	$str.="Thinking <br>".$data[4]."%:";
+	$str.="Feeling <br>".$data[5]."%:";
+	$str.="Judging <br>".$data[6]."%:";
+	$str.="Perceiving <br>".$data[7]."%";
+	
+	$un=$_COOKIE["user"];
+
+	$result = mysqli_query($connect, "SELECT mbti from $table where user = \"$un\"");
+        $row = $result->fetch_row();
+
+	if(count($row) == 0){	
+		$stmt="INSERT INTO $table (mbti) VALUES ('$str') WHERE user = '$un'";
+        	$connect->query($stmt);
+	}else{
+		$stmt="UPDATE $table SET mbti='$str' WHERE user='$un';";
+                $connect->query($stmt);
+	}
+        mysqli_close($connect);
+	}
+
 	if(isset($_POST["mbti"])){
+		send_results();
 		results();
 	}else{
 		print<<<ERR

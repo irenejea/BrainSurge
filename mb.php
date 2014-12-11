@@ -96,19 +96,26 @@ WELCOME;
 	}	
 	if(isset($_POST["logout"])){
 		setcookie("user", "", time() - 3600);
+		setcookie("first", "", time() - 3600);
 		header("Location: mb.php");
 	}
 	if(isset($_POST["login"])){
 		if(!empty($_POST["username"]) && !empty($_POST["password"])){
-			$un = $_POST["username"];
-			$pw = $_POST["password"];
-			login($un, $pw);
+                $un = purge($_POST["username"]);
+                $pw = purge($_POST["password"]);
+                $pw_protected = crypt($pw,$un);
+                login($un, $pw_protected);
 		}
 		else{
 			echo "<script type = 'text/javascript'>
 				alert('Please fill in both fields to login.') </script>";
 		}
 	}	
+        //Dr. Mitra's basic purge function
+        function purge ($str){
+                $purged_str = preg_replace("/\W/", "", $str);
+                return $purged_str;
+        }
 	function login($un, $pw){
 		$host = "fall-2014.cs.utexas.edu";
 		$user = "irenej";
@@ -117,7 +124,10 @@ WELCOME;
 		$port = "3306";
 		$connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
 		$table = "brainsurge";
-		
+
+                $un=mysqli_real_escape_string($connect, $un);
+                $pw=mysqli_real_escape_string($connect, $pw);		
+
 		$result = mysqli_query($connect, "SELECT * from $table where Username = \"$un\"");
 		$row = $result->fetch_row();
 		if(count($row) == 0){
@@ -130,7 +140,8 @@ WELCOME;
 		}
 		else{	
 			$name = $row[0];
-			setcookie("user", $name);
+			setcookie("user", $un);
+			setcookie("first", $name);
 			header("Location: mb.php");
 		}
 		mysqli_close($connect);
@@ -196,7 +207,7 @@ WELCOME;
 	<input type="radio" name="q9" value="a" required> A: Sensible people<br>
 	<input type="radio" name="q9" value="b"> B: Imaginative people<br>
 	<br>
-
+<!--
 	<span class="quest_head">Question 10</span><br>
 	<span class="quest">Are you more interested in:</span><br>
 	<input type="radio" name="q10" value="a" required> A: What is actual<br>
@@ -562,7 +573,7 @@ WELCOME;
 	<input type="radio" name="q70" value="a" required> A: deliberate than spontaneous<br>
 	<input type="radio" name="q70" value="b"> B: spontaneous than deliberate<br>
 	<br>
-
+-->
 	<input type="submit" value="Submit" name="mbti">
 	<input type="reset" value="Reset">
 	</form>

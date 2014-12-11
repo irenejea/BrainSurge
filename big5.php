@@ -105,26 +105,33 @@ LOGIN;
 	else{	
 		print <<<WELCOME
 			<div id="welcome">
-				Welcome back, <a href="profile.php"><u><b>{$_COOKIE["user"]}</b></u></a>
+				Welcome back, <a href="profile.php"><u><b>{$_COOKIE["name"]}</b></u></a>
 				<form method="post" action="big5.php"><input type="submit" id="logout" name="logout" value="Log Out"></form>
 			</div>
 WELCOME;
 	}	
 	if(isset($_POST["logout"])){
 		setcookie("user", "", time() - 3600);
+		setcookie("first", "", time() - 3600);
 		header("Location: big5.php");
 	}
 	if(isset($_POST["login"])){
 		if(!empty($_POST["username"]) && !empty($_POST["password"])){
-			$un = $_POST["username"];
-			$pw = $_POST["password"];
-			login($un, $pw);
+		 $un = purge($_POST["username"]);
+                $pw = purge($_POST["password"]);
+                $pw_protected = crypt($pw,$un);
+                login($un, $pw_protected);
 		}
 		else{
 			echo "<script type = 'text/javascript'>
 				alert('Please fill in both fields to login.') </script>";
 		}
-	}	
+	}
+        //Dr. Mitra's basic purge function
+        function purge ($str){
+                $purged_str = preg_replace("/\W/", "", $str);
+                return $purged_str;
+        }
 	function login($un, $pw){
 		$host = "fall-2014.cs.utexas.edu";
 		$user = "irenej";
@@ -133,6 +140,9 @@ WELCOME;
 		$port = "3306";
 		$connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
 		$table = "brainsurge";
+
+                $un=mysqli_real_escape_string($connect, $un);
+                $pw=mysqli_real_escape_string($connect, $pw);
 		
 		$result = mysqli_query($connect, "SELECT * from $table where Username = \"$un\"");
 		$row = $result->fetch_row();
@@ -146,7 +156,8 @@ WELCOME;
 		}
 		else{	
 			$name = $row[0];
-			setcookie("user", $name);
+			setcookie("first", $name);
+			setcookie("user", $un);
 			header("Location: big5.php");
 		}
 		mysqli_close($connect);
