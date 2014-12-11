@@ -137,8 +137,12 @@
 		}
 		else{	
 			$name = $row[0];
+<<<<<<< HEAD
                         setcookie("user", $un);
                         setcookie("first", $name);
+=======
+			setcookie("user", $name);
+>>>>>>> FETCH_HEAD
 			header("Location: home.php");
 		}
 		mysqli_close($connect);
