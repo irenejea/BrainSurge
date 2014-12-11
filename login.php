@@ -108,7 +108,8 @@
 				alert('Username and password do not match.') </script>";	
 		}
 		else{	
-			setcookie("user", $un);
+			$name = $row[0];
+			setcookie("user", $name);
 			header("Location: home.php");
 		}
 		mysqli_close($connect);
