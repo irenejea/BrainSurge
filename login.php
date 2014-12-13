@@ -5,6 +5,38 @@
 	<link rel="stylesheet" href="./login.css" type="text/css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
 	<script type = "text/javascript" src = "./login.js"></script>
+	<script type = "text/javascript">
+		function check(name){
+			var xhr;
+			if (window.XMLHttpRequest){
+				xhr = new XMLHttpRequest();
+			}
+			else{
+				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4 && xhr.status == 200){
+					var response = xhr.responseText;
+					var input = $("#user");
+					var elmnt = $("#taken");
+					if(response == "taken"){
+						input.removeClass("valid").addClass("invalid");
+						elmnt.html(name + " is unavailable.");
+					}
+					else{
+						input.removeClass("invalid").addClass("valid");
+						elmnt.html("");
+						if(name.length == 0){
+							input.removeClass("valid").addClass("invalid");
+						}
+					}
+				}
+			}
+			xhr.open("GET", "check_name.php?name=" + name, true);
+			xhr.send();
+		}
+	</script>
+
 </head>
 
 <div id="head">
@@ -28,19 +60,16 @@
 	<p> Register below to create a profile. </p>
 	<form id="formR" method="post" action="login.php">
 	<p>
-		<input id="fn" type="text" name="fn" placeholder="First Name" size="20"/>
-		<input id="ln" type="text" name="ln" placeholder="Last Name" size="20"/>
-		<span class="error">These fields are required</span>
+		<input id="fn" type="text" name="fn" placeholder="*First Name" size="20"/>
+		<input id="ln" type="text" name="ln" placeholder="*Last Name" size="20"/>
 	</p>
 	<ul>
-	<li><input type="text" id="user" name="user" placeholder="Username" size="45"/>
-		<span class="error">A valid username is required</span></li>
-	<li><input type="password" id="pass" name="pass" placeholder="Password" size="45"/>
-		<span class="error">A valid password is required</span></li>
+	<li><input type="text" id="user" name="user" placeholder="*Username" size="45" onblur="check(this.value)"/>
+		<span id="taken" style="color: red; font-size: small; margin-left:.5em"></span></li>
+	<li><input type="password" id="pass" name="pass" placeholder="*Password" size="45"/>
+		<br><span id="regError" class="error">All fields with (*) are required</span></li>
 	</ul>
-	<p><input type="submit" id="submitR" name="register" value="Register"/>
-		<span class="taken">That</span></p>
-	</form>
+	<p><input type="submit" id="submitR" name="register" value="Register"/></p>
 </div>
 
 </div>
