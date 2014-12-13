@@ -65,15 +65,16 @@ $(document).ready(function(){
 		var go=true;
 		var form=$("#formR").serializeArray();
 		for(var input in form){
+			var pass=$("#"+form[3]['name']);
 			var val=$("#"+form[input]['name']);
 			var valid=val.hasClass("valid");
-			var elmnt=$("span", val.parent());
+			var error = $("span", pass.parent());	
 			if(!valid){
-				elmnt.removeClass("error").addClass("error_show");
+				error.removeClass("error").addClass("error_show")
 				go=false;
 			}
 			else{
-				elmnt.removeClass("error_show").addClass("error");
+				error.removeClass("error_show").addClass("error");
 			}
 		}
 		if(!go){
@@ -84,13 +85,13 @@ $(document).ready(function(){
 		var go=true;
 		var form=$("#formL").serializeArray();
 		for(var input in form){
-		var user=$("#"+form[0]['name']);
-		var validUser=user.hasClass("valid");
-		var pass=$("#"+form[1]['name']);
-		var validPass=pass.hasClass("valid");
-		var error = $("span", pass.parent());
-		if(!validUser || !validPass){
-			error.removeClass("error").addClass("error_show");
+			var user=$("#"+form[0]['name']);
+			var validUser=user.hasClass("valid");
+			var pass=$("#"+form[1]['name']);
+			var validPass=pass.hasClass("valid");
+			var error = $("span", pass.parent());
+			if(!validUser || !validPass){
+				error.removeClass("error").addClass("error_show");
 				go=false;
 			}
 			else{
