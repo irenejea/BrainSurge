@@ -5,6 +5,36 @@
 	<link rel="stylesheet" href="./login.css" type="text/css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
 	<script type = "text/javascript" src = "./login.js"></script>
+	<script type = "text/javascript">
+		function check(name){
+			var xhr;
+			if (window.XMLHttpRequest){
+				xhr = new XMLHttpRequest();
+			}
+			else{
+				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4 && xhr.status == 200){
+					var response = xhr.responseText;
+					var input = $("#user");
+					var elmnt = $("span", input.parent());
+					if(response == "taken"){
+						input.removeClass("valid").addClass("invalid");
+						elmnt.removeClass("error").addClass("error_show");
+						alert("That username is taken. Please choose another and try again.");
+					}
+					else{	
+						input.removeClass("invalid").addClass("valid");
+						elmnt.removeClass("error_show").addClass("error");
+					}
+				}
+			}
+			xhr.open("GET", "check_name.php?name=" + name, true);
+			xhr.send();
+		}
+	</script>
+
 </head>
 
 <div id="head">
@@ -33,13 +63,13 @@
 		<span class="error">These fields are required</span>
 	</p>
 	<ul>
-	<li><input type="text" id="user" name="user" placeholder="Username" size="45"/>
-		<span class="error">A valid username is required</span></li>
+	<li><input type="text" id="user" name="user" placeholder="Username" size="45" onblur="check(this.value)"/>
+		<span class="error">A valid username is required</span>
+		</li>
 	<li><input type="password" id="pass" name="pass" placeholder="Password" size="45"/>
 		<span class="error">A valid password is required</span></li>
 	</ul>
 	<p><input type="submit" id="submitR" name="register" value="Register"/>
-		<span class="taken">That</span></p>
 	</form>
 </div>
 
